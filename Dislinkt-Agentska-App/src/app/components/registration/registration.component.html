@@ -1,0 +1,80 @@
+<div class="container">
+    <mat-card *ngIf="this.regSuccess" class="mat-card">Thank you for registering! You need to verify your E-Mail before using your account.</mat-card>
+      <h3 style="text-align: center">REGISTRATION</h3>
+      <br>
+      <form style="margin-left: 100px" [formGroup]="registerForm" (ngSubmit)="register()">
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstname" name="firstname" [(ngModel)]="firstname" required>
+            <mat-error *ngIf="registerForm.value.firstname">Firstname invalid.</mat-error>         
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastname" name="lastname" [(ngModel)]="lastname" required>
+            <mat-error *ngIf="registerForm.value.lastname">Lastname invalid.</mat-error>         
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" name="username" [(ngModel)]="username" required>
+            <mat-error *ngIf="registerForm.value.username">Between 4 and 10 characters is acceptable, only letters, numbers and period.</mat-error>         
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Date of birth</mat-label>
+            <input matInput formControlName="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" required>
+            <mat-error *ngIf="registerForm.value.dateOfBirth">YYYY-MM-DD date format required.</mat-error>         
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email"  [(ngModel)]="email" required>
+            <mat-error *ngIf="registerForm.value.email">Email is not valid.</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required>
+            <mat-error *ngIf="registerForm.value.phoneNumber">Phone number invalid.</mat-error>         
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" name="address" [(ngModel)]="address" required>
+            <mat-error *ngIf="registerForm.value.address">Address invalid.</mat-error>         
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Password</mat-label>
+             <input matInput formControlName="password" name="password" type="password" [(ngModel)]="password" required>
+             <mat-error *ngIf="registerForm.value.password">Password must be a combination of lower-case, upper-case, numbers and at least 9 characters long</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" type="password" required pattern="{{registerForm.value.password}}">
+            <mat-error *ngIf="registerForm.value.confirmPassword">Passwords do not match.</mat-error>
+        </mat-form-field>
+        </div>
+          <br>
+  
+          <div fxFlex="100%">
+            <button style="margin-left: 50px" mat-stroked-button color="primary" type="submit" routerLink="login">Register</button>
+        </div>
+       
+      </form>
+  </div>
+  
+  
+      
+  
