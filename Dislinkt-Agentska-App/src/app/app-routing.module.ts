@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
+import { MakeRequestComponent } from './components/make-request/make-request.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,14 @@ const routes: Routes = [
   {
     path: "companies/:idCompany",
     component: CompanyDetailsComponent
+  },
+
+  { path: "request",
+    component: MakeRequestComponent,
+    canActivate: [LoggedInGuard, HasRoleGuard],
+    data: { role: 'USER'}
   }
+
 
 ];
 

@@ -24,6 +24,7 @@ import { AddCompanyComponent } from './components/add-company/add-company.compon
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CompanyListComponent } from './components/company-list/company-list.component';
+import { MakeRequestComponent } from './components/make-request/make-request.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CompanyListComponent } from './components/company-list/company-list.com
     LoginComponent,
     AddCompanyComponent,
     CompanyDetailsComponent,
-    CompanyListComponent
+    CompanyListComponent,
+    MakeRequestComponent
   ],
   imports: [
     BrowserModule,
