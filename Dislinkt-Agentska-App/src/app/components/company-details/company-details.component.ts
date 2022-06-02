@@ -55,6 +55,10 @@ export class CompanyDetailsComponent implements OnInit {
     
   }
 
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe())
+  }
+
   getCompany() {
     this.subs.push(this.companyService.getCompany(this.idCompany).subscribe((response: CompanyModel) => {
       this.company = response;
@@ -72,7 +76,9 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   editCompany(): void {
-    this.subs.push(this.companyService.editCompany(this.company).subscribe());
+    this.subs.push(this.companyService.editCompany(this.company).subscribe(response => {
+      this.company = response;
+    }));
   }
 
   public cancelEdit() {
