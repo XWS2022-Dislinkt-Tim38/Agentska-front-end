@@ -17,7 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationComponent } from './components/registration/registration.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
@@ -25,6 +25,7 @@ import { CompanyDetailsComponent } from './components/company-details/company-de
 import { MatNativeDateModule } from '@angular/material/core';
 import { CompanyListComponent } from './components/company-list/company-list.component';
 import { MakeRequestComponent } from './components/make-request/make-request.component';
+import { AuthInterceptorProvider} from './auth.interceptor';
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import { MakeRequestComponent } from './components/make-request/make-request.com
     MatNativeDateModule
 
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
