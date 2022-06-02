@@ -1,9 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, tap } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, tap } from "rxjs";
 import { environment } from 'src/environments/environment';
 import {Router, ActivatedRoute } from "@angular/router";
 import { UserModel } from "../model/user";
+import { User } from "../components/company/company.component";
 
 
 @Injectable({
@@ -14,65 +15,65 @@ import { UserModel } from "../model/user";
 
 export class AuthenticationService {
 
-    loggedUser: UserModel | null
-    private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
-    isLoggedIn$ = this._isLoggedIn$.asObservable()
+  endpoint: string = 'http://localhost:8020/';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  currentUser: UserModel = new UserModel();
+  username: string = '';
+  
 
-    get token(): any {
-      return localStorage.getItem('regUserToken');
-    }
+  loggedUser: UserModel | null
+  private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
+  isLoggedIn$ = this._isLoggedIn$.asObservable()
 
-    constructor(private http: HttpClient, private router: Router,  private activeRoute: ActivatedRoute) { 
+  get token(): any {
+    return localStorage.getItem('regUserToken');
+  }
 
-      this._isLoggedIn$.next(!!this.token)
-      this.loggedUser = this.getUser(this.token)
+  constructor(private http: HttpClient, private router: Router,  private activeRoute: ActivatedRoute) { 
+
+    this._isLoggedIn$.next(!!this.token)
+    this.loggedUser = this.getUser(this.token)
     
-    }
+  }
 
-    
-   public login(obj: any): Observable<any>{
-        this.router.navigate(['/'])
-        return this.http.post(environment.baseUrlAuthService + "/login", obj).pipe(
-          tap((response: any) => {
+  public login(obj: any): Observable<any>{
+      this.router.navigate(['/'])
+      return this.http.post(environment.baseUrlAuthService + "/login", obj).pipe(
+        tap((response: any) => {
                          
-            this.storeToken(response.accessToken)
-            this.loggedUser = this.getUser(response.accessToken)               
-            
-            console.log(this.loggedUser)
-          
-          })   
+          this.storeToken(response.accessToken)
+          this.loggedUser = this.getUser(response.accessToken) 
+        })   
                                       
-        )
+      )
         
-    }
+  }
 
-    private getUser(token: string): UserModel | null {
-      if (!token) {
-        return null
-      }
-      return JSON.parse(atob(token.split('.')[1])) as UserModel;
+  private getUser(token: string): UserModel | null {
+    if (!token) {
+      return null
     }
+    this.currentUser = JSON.parse(atob(this.token.split('.')[1])) as UserModel;
+    //console.log(this.currentUser);
+    var username = this.currentUser.sub;
+    //console.log(username);
 
-    public storeToken(accessToken: any) {
-      this._isLoggedIn$.next(true)
-      localStorage.setItem("regUserToken", accessToken)
-    }
+    return this.currentUser;
+  }
 
-    public logout() {
-      //this.router.navigate(['/login'])
-      window.location.href="http://localhost:4200/login"
-      localStorage.removeItem("regUserToken")
-    }
+  public storeToken(accessToken: any) {
+    this._isLoggedIn$.next(true)
+    localStorage.setItem("regUserToken", accessToken)
+  }
 
-    reloadCurrentPage(){
-      let currentUrl = this.router.url;
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-      this.router.navigate([currentUrl]);
-      });
-    }
+  public logout() {
+    //this.router.navigate(['/login'])
+    window.location.href="http://localhost:4200/login"
+    localStorage.removeItem("regUserToken")
+  }
 
-    public passwordlessLoginSendEmail(email: string): Observable<any>{
-      return this.http.post(environment.baseUrlUserService + "/passwordless", email)
+  public passwordlessLoginSendEmail(email: string): Observable<any>{
+    return this.http.post(environment.baseUrlUserService + "/passwordless", email)
     
   }
 
@@ -85,12 +86,9 @@ export class AuthenticationService {
         this.loggedUser = this.getUser(response.accessToken)               
         
         console.log(this.loggedUser)
-      
-      })   
-                                  
+      })                            
     )
-    
-}
+  }
     
 
 }

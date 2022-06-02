@@ -18,4 +18,8 @@ export class NavigationComponent implements OnInit {
     console.log("Ok button works")
   }
 
+  getUser(): void {
+    
+  }
+
 }

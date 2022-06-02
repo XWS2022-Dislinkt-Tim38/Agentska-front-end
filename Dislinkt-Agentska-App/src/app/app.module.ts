@@ -9,6 +9,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatCardModule} from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { CompanyComponent } from './components/company/company.component';
+import { CompanyDetailsComponent } from './components/company-details/company-details.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,9 @@ import { LoginComponent } from './components/login/login.component';
     HomeComponent,
     NavigationComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    CompanyComponent,
+    CompanyDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,9 @@ import { LoginComponent } from './components/login/login.component';
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [],
