@@ -18,12 +18,12 @@ export class AuthenticationService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   username: string = '';
   
-
-  
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
   private _isOwner$ = new BehaviorSubject<boolean>(false)
   isOwner = this._isOwner$.asObservable()
+  private _isUser = new BehaviorSubject<boolean>(false)
+  isUser = this._isUser.asObservable()
   loggedUser: UserTokenModel | null;
 
   get token(): any {
@@ -34,7 +34,8 @@ export class AuthenticationService {
 
     this._isLoggedIn$.next(!!this.token)
     this.loggedUser = this.getUser(this.token)
-    this._isOwner$.next(this.loggedUser?.role.includes('OWNER'))
+    this._isOwner$.next(this.loggedUser?.role.includes('COMPANY_OWNER'))
+    this._isUser.next(this.loggedUser?.role.includes('USER'))
     
   }
 

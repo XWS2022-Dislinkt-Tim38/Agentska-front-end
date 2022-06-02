@@ -30,19 +30,6 @@ export class CompanyDetailsComponent implements OnInit {
   country?: string;
   website?: string;
   industry?: string;
-  /*
-  //forma
-  companyUpdateForm = new FormGroup({
-    name:  new FormControl('', Validators.required),
-    city: new FormControl('', Validators.required),
-    foundation: new FormControl('', Validators.required),
-    numberOfEmployees: new FormControl('', Validators.required),
-    country: new FormControl('', Validators.required),
-    website: new FormControl('', Validators.required),
-    industry: new FormControl('', Validators.required)
-  });
-  */
-
 
   constructor(private companyService: CompanyService, private route: ActivatedRoute) {
     this._flagDisabledEdit.next(true);
@@ -51,6 +38,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.idCompany = this.route.snapshot.params['idCompany'];
+    console.log(this.idCompany)
     this.getCompany();
     
   }
@@ -58,9 +46,10 @@ export class CompanyDetailsComponent implements OnInit {
   ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe())
   }
-
+  
   getCompany() {
     this.subs.push(this.companyService.getCompany(this.idCompany).subscribe((response: CompanyModel) => {
+      console.log(response);
       this.company = response;
       this.name = response.companyDetails.name;
       this.city = response.companyDetails.city;
@@ -69,15 +58,14 @@ export class CompanyDetailsComponent implements OnInit {
       this.country = response.companyDetails.country;
       this.website = response.companyDetails.website;
       this.industry = response.companyDetails.industry;
-      console.log(this.company);
     }, (error: HttpErrorResponse) => {
-      alert(error.message);
+      console.log(error);
     }));
   }
 
   editCompany(): void {
     this.subs.push(this.companyService.editCompany(this.company).subscribe(response => {
-      this.company = response;
+      console.log(response);
     }));
   }
 

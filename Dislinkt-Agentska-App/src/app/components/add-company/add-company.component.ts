@@ -11,13 +11,6 @@ import { RegistrationService } from 'src/app/service/registration.service';
 import { UserService } from 'src/app/service/user.service';
 import { environment } from 'src/environments/environment';
 
-export class User{
-  constructor(
-    public sub: string,
-    public role: string
-  ){}
-}
-
 @Component({
   selector: 'app-add-company',
   templateUrl: './add-company.component.html',
@@ -28,6 +21,7 @@ export class User{
 export class AddCompanyComponent implements OnInit {
 
   currentUser: UserModel = new UserModel();
+
   idUser?: string = this.currentUser.id;
   user: UserModel = new UserModel();
   subs: Subscription[] = [];
@@ -54,8 +48,13 @@ export class AddCompanyComponent implements OnInit {
 
     this.user = JSON.parse(atob(this.token.split('.')[1])) as UserModel;
     this.username = this.user.sub;
+    this.getUser(this.username);
 
-    this.subs.push(this.userService.getUser(this.username).subscribe((response: UserModel) => {
+    return this.username;
+  }
+  
+  getUser(username?: string): void {
+    this.subs.push(this.userService.getUser(username).subscribe((response: UserModel) => {
       this.currentUser.address = response.address;
       this.currentUser.dateOfBirth = response.dateOfBirth;
       this.currentUser.email = response.email;
@@ -68,12 +67,9 @@ export class AddCompanyComponent implements OnInit {
       this.currentUser.phoneNumber = response.phoneNumber;
       this.currentUser.role = response.role;
       this.currentUser.username = response.username;
-
     }));
-
-    return this.username;
   }
-  
+
   constructor(private companyService: CompanyService, private auth: AuthenticationService, private http: HttpClient, private userService: UserService) {
 
   }

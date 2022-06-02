@@ -14,12 +14,4 @@ export class NavigationComponent implements OnInit {
    
   }
 
-  login(): void {
-    console.log("Ok button works")
-  }
-
-  getUser(): void {
-    
-  }
-
 }

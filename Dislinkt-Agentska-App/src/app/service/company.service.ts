@@ -32,10 +32,10 @@ export class CompanyService {
     }
 
     public getCompany(id: string) {
-        return this.http.get<CompanyModel>(`${this.companyUrl}/${id}`, {headers: this.reqHeader});
+        return this.http.get<CompanyModel>(`${this.companyUrl}/${id}`);
     }
 
-    public editCompany(company: CompanyModel) : Observable<any> {
+    public editCompany(company: CompanyModel){
         return this.http.put(this.companyUrl, company);
     }
 }

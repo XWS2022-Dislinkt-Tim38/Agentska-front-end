@@ -6,10 +6,10 @@
         </span>
         <div>
             <div *ngIf="authService.isLoggedIn$ | async">
-                <a class="itemSpacer" mat-flat-button color="primary" routerLink="admin">ADMIN</a>
-                <a class="itemSpacer" mat-flat-button color="primary" routerLink="user">USER</a>
-                <a *ngIf="!(authService.isOwner | async)" class="itemSpacer" mat-flat-button color="primary" routerLink="company">REGISTER A COMPANY</a>
-                <button *ngIf="!(authService.isOwner | async)" class="itemSpacer" mat-flat-button color="primary" mat-button [matMenuTriggerFor]="menu">COMPANY</button>
+                <a  class="itemSpacer" mat-flat-button color="primary" routerLink="request">REGISTER A COMPANY</a>
+                <!--<button class="itemSpacer" mat-flat-button color="primary" mat-button [matMenuTriggerFor]="menu">COMPANY</button>-->
+                <a  class="itemSpacer" mat-flat-button color="primary" routerLink="">REQUESTS</a>
+                <a  class="itemSpacer" mat-flat-button color="primary" routerLink="companies">COMPANY</a>
                 <mat-menu #menu="matMenu" >
                     <button mat-menu-item routerLink="addCompany">ADD COMPANY</button>
                     <button mat-menu-item routerLink="companies">MY COMPANIES</button>

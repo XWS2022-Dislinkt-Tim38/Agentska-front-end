@@ -1,19 +1,7 @@
-<h2>YOUR COMPANIES</h2>
+<br>
+
 
 <div *ngFor="let company of companies">
-  <table>
-    <td>
-      <h3>
-        {{ company.companyDetails.name }}
-    </h3>
-    </td>
-    <td>
-      <button type="button" routerLink={{company.id}}>
-        View
-      </button>
-    </td>
-    
-  </table>
-  
-
+  <h2 style="text-align: center" >YOUR COMPANIES</h2>
+    <a style="margin-left: 48%" class="itemSpacer" mat-flat-button color="primary" routerLink={{company.id}}>{{ company.companyDetails.name }}</a>
 </div>
