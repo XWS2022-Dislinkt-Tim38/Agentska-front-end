@@ -8,7 +8,12 @@
             <div *ngIf="authService.isLoggedIn$ | async">
                 <a class="itemSpacer" mat-flat-button color="primary" routerLink="admin">ADMIN</a>
                 <a class="itemSpacer" mat-flat-button color="primary" routerLink="user">USER</a>
-                <a class="itemSpacer" mat-flat-button color="primary" routerLink="company">COMPANY</a>
+                <a *ngIf="!(authService.isOwner | async)" class="itemSpacer" mat-flat-button color="primary" routerLink="company">REGISTER A COMPANY</a>
+                <button *ngIf="!(authService.isOwner | async)" class="itemSpacer" mat-flat-button color="primary" mat-button [matMenuTriggerFor]="menu">COMPANY</button>
+                <mat-menu #menu="matMenu" >
+                    <button mat-menu-item routerLink="addCompany">ADD COMPANY</button>
+                    <button mat-menu-item routerLink="companies">MY COMPANIES</button>
+                </mat-menu>
             </div>           
         </div>
         <div class="spacer"> </div>

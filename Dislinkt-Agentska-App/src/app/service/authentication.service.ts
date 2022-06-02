@@ -2,9 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, map, Observable, tap } from "rxjs";
 import { environment } from 'src/environments/environment';
-import {Router, ActivatedRoute } from "@angular/router";
-import { UserModel } from "../model/user";
-import { User } from "../components/company/company.component";
+import { Router, ActivatedRoute } from "@angular/router";
+import { UserTokenModel } from "../model/userToken";
 
 
 @Injectable({
@@ -17,13 +16,15 @@ export class AuthenticationService {
 
   endpoint: string = 'http://localhost:8020/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser: UserModel = new UserModel();
   username: string = '';
   
 
-  loggedUser: UserModel | null
+  
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
+  private _isOwner$ = new BehaviorSubject<boolean>(false)
+  isOwner = this._isOwner$.asObservable()
+  loggedUser: UserTokenModel | null;
 
   get token(): any {
     return localStorage.getItem('regUserToken');
@@ -33,6 +34,7 @@ export class AuthenticationService {
 
     this._isLoggedIn$.next(!!this.token)
     this.loggedUser = this.getUser(this.token)
+    this._isOwner$.next(this.loggedUser?.role.includes('OWNER'))
     
   }
 
@@ -43,22 +45,18 @@ export class AuthenticationService {
                          
           this.storeToken(response.accessToken)
           this.loggedUser = this.getUser(response.accessToken) 
+          //console.log("ROLE: " + this.loggedUser?.role);
         })   
                                       
       )
         
   }
 
-  private getUser(token: string): UserModel | null {
+  private getUser(token: string): UserTokenModel | null {
     if (!token) {
       return null
     }
-    this.currentUser = JSON.parse(atob(this.token.split('.')[1])) as UserModel;
-    //console.log(this.currentUser);
-    var username = this.currentUser.sub;
-    //console.log(username);
-
-    return this.currentUser;
+    return JSON.parse(atob(this.token.split('.')[1])) as UserTokenModel;
   }
 
   public storeToken(accessToken: any) {

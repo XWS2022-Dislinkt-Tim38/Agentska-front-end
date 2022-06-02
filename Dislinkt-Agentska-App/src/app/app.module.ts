@@ -20,9 +20,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
-import { CompanyComponent } from './components/company/company.component';
+import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CompanyListComponent } from './components/company-list/company-list.component';
 
 
 @NgModule({
@@ -32,8 +33,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     NavigationComponent,
     RegistrationComponent,
     LoginComponent,
-    CompanyComponent,
-    CompanyDetailsComponent
+    AddCompanyComponent,
+    CompanyDetailsComponent,
+    CompanyListComponent
   ],
   imports: [
     BrowserModule,

@@ -7,4 +7,5 @@ export class CompanyDetailsModel {
         website?: string;
         industry?: string;
         techStack?: Array<String>;
+        followers?: Array<String>;
 }

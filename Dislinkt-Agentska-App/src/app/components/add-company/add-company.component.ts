@@ -19,13 +19,13 @@ export class User{
 }
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.scss']
+  selector: 'app-add-company',
+  templateUrl: './add-company.component.html',
+  styleUrls: ['./add-company.component.scss']
 })
 
 
-export class CompanyComponent implements OnInit {
+export class AddCompanyComponent implements OnInit {
 
   currentUser: UserModel = new UserModel();
   idUser?: string = this.currentUser.id;
@@ -42,8 +42,6 @@ export class CompanyComponent implements OnInit {
   country: string = '';
   website: string = '';
   industry: string = '';
-  techStack: Array<String> = [];
-  
 
   get token(): any {
     return localStorage.getItem('regUserToken');
@@ -53,6 +51,7 @@ export class CompanyComponent implements OnInit {
     if (!token) {
       return '';
     }
+
     this.user = JSON.parse(atob(this.token.split('.')[1])) as UserModel;
     this.username = this.user.sub;
 
@@ -108,7 +107,8 @@ export class CompanyComponent implements OnInit {
           country: this.country,
           website: this.website,
           industry: this.industry,
-          techStack: new Array<String>()
+          techStack: new Array<String>(),
+          followers: new Array<String>()
         }
         this.companyRegistration = {
           idUser: this.currentUser.id,
@@ -120,7 +120,6 @@ export class CompanyComponent implements OnInit {
           //alert("Company sent for admin approval.")
           window.location.href="http://localhost:4200/"
         });
-      
     }else{
       console.log('Failed',this.registerForm.invalid);
       alert('Invalid input. Try again');

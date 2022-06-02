@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { asapScheduler, Observable, Subscription } from "rxjs";
 import { LoginComponent } from "../components/login/login.component";
@@ -13,6 +13,8 @@ import { UserService } from "./user.service";
 export class CompanyService {
     
     private companyUrl = 'http://localhost:8020/company';
+    private token = this.auth.token;
+    private reqHeader = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
     username: string = '';
     subs: Subscription[] = [];
     user: UserModel = new UserModel();
@@ -25,4 +27,16 @@ export class CompanyService {
         return this.http.post(this.companyUrl, company);
     }
 
+    public getAllCompanies() {
+        return this.http.get<CompanyModel[]>(this.companyUrl);
+    }
+
+    public getCompany(id: string) {
+        return this.http.get<CompanyModel>(`${this.companyUrl}/${id}`, {headers: this.reqHeader});
+    }
+
+    public editCompany(company: CompanyModel){
+        console.log(company);
+        return this.http.put(this.companyUrl, company);
+    }
 }

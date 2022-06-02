@@ -1,0 +1,19 @@
+<h2>YOUR COMPANIES</h2>
+
+<div *ngFor="let company of companies">
+  <table>
+    <td>
+      <h3>
+        {{ company.companyDetails.name }}
+    </h3>
+    </td>
+    <td>
+      <button type="button" routerLink={{company.id}}>
+        View
+      </button>
+    </td>
+    
+  </table>
+  
+
+</div>
