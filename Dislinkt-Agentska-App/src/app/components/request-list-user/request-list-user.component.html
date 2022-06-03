@@ -1,0 +1,29 @@
+<br>
+<h2 style="text-align: center">Pending requests</h2>
+
+<div style="margin-left: 10%; margin-right: 10%">
+    <table style="text-align: center" id="requests">
+        <thead>
+          <tr>
+            <th style="text-align: center">User id</th>
+            <th style="text-align: center">Name</th>
+            <th style="text-align: center">Website</th>
+            <th style="text-align: center">Industry</th>
+            <th style="text-align: center">Country</th>
+            <th style="text-align: center">City</th>
+            <th style="text-align: center">Status</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let request of requests">
+            <td *ngIf="request.idUser==currentUser.id">{{ request.idUser }}</td>
+            <td *ngIf="request.idUser==currentUser.id">{{ request.companyDTO.companyDetails.name }}</td>
+            <td *ngIf="request.idUser==currentUser.id">{{ request.companyDTO.companyDetails.website }}</td>
+            <td *ngIf="request.idUser==currentUser.id">{{ request.companyDTO.companyDetails.industry }}</td>
+            <td *ngIf="request.idUser==currentUser.id">{{ request.companyDTO.companyDetails.country }}</td>
+            <td *ngIf="request.idUser==currentUser.id">{{ request.companyDTO.companyDetails.city }}</td>
+            <td *ngIf="request.idUser==currentUser.id">{{ request.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

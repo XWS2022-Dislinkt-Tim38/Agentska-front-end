@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { asapScheduler, Observable, Subscription } from "rxjs";
-import { LoginComponent } from "../components/login/login.component";
+import { Observable, Subscription } from "rxjs";
 import { CompanyModel } from "../model/company";
 import { UserModel } from "../model/user";
 import { AuthenticationService } from "./authentication.service";

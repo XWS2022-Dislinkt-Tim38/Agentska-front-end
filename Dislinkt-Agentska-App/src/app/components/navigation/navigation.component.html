@@ -8,7 +8,8 @@
             <div *ngIf="authService.isLoggedIn$ | async">
                 <a  class="itemSpacer" mat-flat-button color="primary" routerLink="request">REGISTER A COMPANY</a>
                 <!--<button class="itemSpacer" mat-flat-button color="primary" mat-button [matMenuTriggerFor]="menu">COMPANY</button>-->
-                <a  class="itemSpacer" mat-flat-button color="primary" routerLink="">REQUESTS</a>
+                <a  class="itemSpacer" mat-flat-button color="primary" routerLink="adminRequests">REQUESTS</a>
+                <a  class="itemSpacer" mat-flat-button color="primary" routerLink="requests">YOUR REQUESTS</a>
                 <a  class="itemSpacer" mat-flat-button color="primary" routerLink="companies">COMPANY</a>
                 <mat-menu #menu="matMenu" >
                     <button mat-menu-item routerLink="addCompany">ADD COMPANY</button>

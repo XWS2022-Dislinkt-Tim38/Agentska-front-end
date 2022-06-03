@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestModel } from '../model/request';
@@ -11,6 +11,8 @@ import { UserService } from './user.service';
 export class RequestService {
 
   private requestUrl = 'http://localhost:8020/request';
+  private token = this.auth.token;
+  private reqHeader = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
 
   constructor(private http: HttpClient, private auth: AuthenticationService, private userService: UserService){
         
@@ -28,7 +30,7 @@ export class RequestService {
       return this.http.get<RequestModel>(`${this.requestUrl}/${id}`);
   }
 
-  public updateRequest(request: RequestModel){
-      return this.http.put(this.requestUrl, request);
+  public updateRequest(requestResponse: boolean, id?: string){
+      return this.http.put(`${this.requestUrl}/?id=${id}&requestResponse=${requestResponse}`, {headers: this.reqHeader});
   }
 }

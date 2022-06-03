@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { MakeRequestComponent } from './components/make-request/make-request.component';
+import { RequestListAdminComponent } from './components/request-list-admin/request-list-admin.component';
+import { RequestListUserComponent } from './components/request-list-user/request-list-user.component';
 
 
 const routes: Routes = [
@@ -36,8 +38,18 @@ const routes: Routes = [
     component: MakeRequestComponent,
     canActivate: [LoggedInGuard, HasRoleGuard],
     data: { role: 'USER'}
-  }
+  },
 
+  { path: "adminRequests",
+    component: RequestListAdminComponent,
+    canActivate: [LoggedInGuard, HasRoleGuard],
+    data: { role: 'USER'} 
+  },
+
+  { path: "requests",
+    component: RequestListUserComponent
+    
+  }
 
 ];
 
