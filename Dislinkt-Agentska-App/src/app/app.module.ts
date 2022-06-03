@@ -33,6 +33,8 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { SalariesComponent } from './components/salaries/salaries.component';
 import { InterviewComponent } from './components/interview/interview.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { OffersComponent } from './components/offers/offers.component';
+import { MatChipsModule} from '@angular/material/chips'
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import {MatSliderModule} from '@angular/material/slider';
     CompanyHomeComponent,
     CommentsComponent,
     SalariesComponent,
-    InterviewComponent
+    InterviewComponent,
+    OffersComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import {MatSliderModule} from '@angular/material/slider';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    MatChipsModule
 
   ],
   providers: [AuthInterceptorProvider],

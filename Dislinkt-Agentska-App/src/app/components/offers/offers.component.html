@@ -1,0 +1,22 @@
+<div style="margin-left: 5px; margin-right: 5px;">
+    <br>
+    <button mat-flat-button color="primary" class="itemSpacer" *ngIf="this.user?.role === 'COMPANY_OWNER'"> Create offer </button> 
+    <mat-card *ngFor="let offer of offers" id> 
+        <mat-card style="width: 900px;">
+           <mat-card-header style="background-color: rgb(255,64,129); padding: 0;">
+            <mat-card-title style="color: white"><br>{{offer.title}}<br></mat-card-title>
+           </mat-card-header>
+           <br>
+            <mat-card-subtitle>{{offer.company}} &#9679; {{offer.city}}</mat-card-subtitle>
+            <mat-card-subtitle>{{offer.seniority}}</mat-card-subtitle>
+            <mat-chip-list>
+                <mat-chip  *ngFor="let req of offer.requirements"> {{req}} </mat-chip>
+            </mat-chip-list>
+            <br>
+            <mat-card-actions style="margin-left: 2px ;">
+                <button mat-flat-button color="primary">View</button>
+            </mat-card-actions>
+            <mat-card-subtitle> Deadline: {{offer.deadlineDate}}</mat-card-subtitle>              
+        </mat-card>
+    </mat-card>
+</div>

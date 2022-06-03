@@ -15,6 +15,7 @@ import { CompanyHomeComponent } from './components/company-home/company-home.com
 import { CommentsComponent } from './components/comments/comments.component';
 import { SalariesComponent } from './components/salaries/salaries.component';
 import { InterviewComponent } from './components/interview/interview.component';
+import { OffersComponent } from './components/offers/offers.component';
 
 
 const routes: Routes = [
@@ -73,8 +74,11 @@ const routes: Routes = [
   {
     path: "company/:id/interview",
     component: InterviewComponent
-  }
+  },
 
+  { path: "offers",
+    component: OffersComponent,
+  }
 ];
 
 @NgModule({
