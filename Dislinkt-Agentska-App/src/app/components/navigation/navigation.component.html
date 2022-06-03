@@ -19,6 +19,8 @@
         </div>
         <div class="spacer"> </div>
         <div *ngIf="authService.isLoggedIn$ | async; else notlogged">
+            <mat-icon>person</mat-icon>
+            <a class="itemSpacer" mat-flat-button color="primary" routerLink="user/{{this.userId}}">{{this.username}}</a>
             <a class="itemSpacer" mat-flat-button color="primary" (click)="authService.logout()">Log out</a>
         </div>
         <div>

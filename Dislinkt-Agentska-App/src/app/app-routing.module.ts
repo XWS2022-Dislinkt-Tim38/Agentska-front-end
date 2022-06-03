@@ -10,6 +10,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { MakeRequestComponent } from './components/make-request/make-request.component';
 import { OffersComponent } from './components/offers/offers.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,11 @@ const routes: Routes = [
 
   { path: "offers",
     component: OffersComponent,
+  },
+
+  { 
+    path: "user/:username",
+    component: UserProfileComponent,
   }
 ];
 

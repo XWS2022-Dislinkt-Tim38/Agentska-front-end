@@ -49,16 +49,4 @@ export class LoginComponent implements OnInit {
   
   }
 
-  setToPasswordless(): void{
-    this.isPasswordless = true
-  }
-
-  loginPasswordless(): void{
-    this.authService.passwordlessLoginSendEmail(this.email).subscribe(response => {
-      if(response) alert('Successfully sent email to the user')
-      else alert ("User can not be found")
-
-      window.location.href="http://localhost:4200/login"
-    })
-  }
 }
