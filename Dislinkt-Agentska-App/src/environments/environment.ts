@@ -7,7 +7,8 @@ export const environment = {
   "baseUrlUserService": "http://localhost:8020/user",
   "baseUrlAuthService": "http://localhost:8020/auth",
   "baseUrlTokenService": "http://localhost:8020/token",
-  "baseUrlOfferService": "http://localhost:8020/offer"
+  "baseUrlOfferService": "http://localhost:8020/offer",
+  "baserUrlWebsite": "http://localhost:4201"
 };
 
 /*

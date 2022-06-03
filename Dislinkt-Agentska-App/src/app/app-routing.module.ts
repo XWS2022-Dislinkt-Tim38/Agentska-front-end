@@ -11,6 +11,7 @@ import { CompanyDetailsComponent } from './components/company-details/company-de
 import { MakeRequestComponent } from './components/make-request/make-request.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { LinkAccountComponent } from './components/link-account/link-account.component';
 
 
 const routes: Routes = [
@@ -46,8 +47,15 @@ const routes: Routes = [
 
   { 
     path: "user/:username",
+    canActivate: [LoggedInGuard],
     component: UserProfileComponent,
-  }
+  },
+
+  { path: "user/:username/linkaccount",
+    canActivate: [LoggedInGuard, HasRoleGuard],
+    component: LinkAccountComponent,
+    data: { role: 'COMPANY_OWNER'}
+  },
 ];
 
 @NgModule({

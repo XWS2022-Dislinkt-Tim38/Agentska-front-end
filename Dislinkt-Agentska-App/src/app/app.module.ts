@@ -27,7 +27,9 @@ import { CompanyListComponent } from './components/company-list/company-list.com
 import { MakeRequestComponent } from './components/make-request/make-request.component';
 import { AuthInterceptorProvider} from './auth.interceptor';
 import { OffersComponent } from './components/offers/offers.component';
-import { MatChipsModule} from '@angular/material/chips'
+import { MatChipsModule} from '@angular/material/chips';
+import { LinkAccountComponent } from './components/link-account/link-account.component'
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { MatChipsModule} from '@angular/material/chips'
     CompanyDetailsComponent,
     CompanyListComponent,
     MakeRequestComponent,
-    OffersComponent
+    OffersComponent,
+    UserProfileComponent,
+    LinkAccountComponent
   ],
   imports: [
     BrowserModule,

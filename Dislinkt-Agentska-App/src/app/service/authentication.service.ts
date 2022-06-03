@@ -46,7 +46,7 @@ export class AuthenticationService {
                          
           this.storeToken(response.accessToken)
           this.loggedUser = this.getUser(response.accessToken) 
-          window.location.href="http://localhost:4200"      
+          window.location.href= environment.baserUrlWebsite   
         })                                   
       )  
   }
@@ -65,7 +65,7 @@ export class AuthenticationService {
 
   public logout() {
     //this.router.navigate(['/login'])
-    window.location.href="http://localhost:4200/login"
+    window.location.href= environment.baserUrlWebsite + "/login"
     localStorage.removeItem("regUserToken")
   }
 
