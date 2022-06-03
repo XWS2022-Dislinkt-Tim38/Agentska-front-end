@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,23 +6,22 @@ import { CompanyModel } from 'src/app/model/company';
 import { CompanyService } from 'src/app/service/company.service';
 
 @Component({
-  selector: 'app-company-home',
-  templateUrl: './company-home.component.html',
-  styleUrls: ['./company-home.component.scss']
+  selector: 'app-salaries',
+  templateUrl: './salaries.component.html',
+  styleUrls: ['./salaries.component.scss']
 })
-export class CompanyHomeComponent implements OnInit {
+export class SalariesComponent implements OnInit {
 
   idCompany: string = '';
   company: CompanyModel = new CompanyModel();
   subs: Subscription[] = [];
   date?: Date = new Date();
 
-  constructor(private route: ActivatedRoute, private companyService: CompanyService) { }
+  constructor(private route: ActivatedRoute, private companyService: CompanyService, private router: Router) { }
 
   ngOnInit(): void {
     this.idCompany = this.route.snapshot.params['id'];
     this.getCompany();
-
 
   }
 
@@ -34,6 +32,18 @@ export class CompanyHomeComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       console.log(error);
     }));
+  }
+
+  goHome() {
+    this.router.navigate(['/company/' + this.company.id]);
+  }
+
+  goComments() {
+    this.router.navigate(['/company/' + this.company.id + '/comments']);
+  }
+
+  goInterview() {
+    this.router.navigate(['/company/' + this.company.id + '/interview']);
   }
 
 }

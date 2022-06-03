@@ -10,13 +10,13 @@
                 <button class="button" style="background-color: #228ab9; color: white">O kompaniji</button>
             </th>
             <th style="text-align: center">
-                <button class="button">Komentari</button>
+                <button class="button" routerLink="./comments">Komentari</button>
             </th>
             <th style="text-align: center">
-                <button class="button">Plata i benefiti</button>
+                <button class="button" routerLink="./salaries">Plata i benefiti</button>
             </th>
             <th style="text-align: center">
-                <button class="button">Intervju</button>
+                <button class="button" routerLink="./interview">Intervju</button>
             </th>
             <th style="text-align: center">
                 <button class="button">Poslovi</button>
@@ -28,19 +28,19 @@
       <table style="width: 90%; margin-left: 5%; table-layout: fixed ;" id="requests">
         <tr>
             <td>Web</td>
-            <td>{{company.companyDetails.website}}</td>
+            <td style="font-weight: bold;" >{{company.companyDetails.website}}</td>
             <td>Country</td>
-            <td>{{company.companyDetails.country}}</td>
+            <td style="font-weight: bold;" >{{company.companyDetails.country}}</td>
             <td>City</td>
-            <td>{{company.companyDetails.city}}</td>
+            <td style="font-weight: bold;" >{{company.companyDetails.city}}</td>
         </tr>
         <tr>
             <td>Industry</td>
-            <td>{{company.companyDetails.industry}}</td>
-            <td>Foundation</td>
-            <td>{{company.companyDetails.foundation}}</td>
+            <td style="font-weight: bold;" >{{company.companyDetails.industry}}</td>
+            <td >Foundation</td>
+            <td style="font-weight: bold;" >{{company.companyDetails.foundation | date:'dd/MM/yyyy'}}</td>
             <td>Number of employees</td>
-            <td>{{company.companyDetails.numberOfEmployees}}</td>
+            <td style="font-weight: bold;" >{{company.companyDetails.numberOfEmployees}}</td>
         </tr>
     </table>
 </div>

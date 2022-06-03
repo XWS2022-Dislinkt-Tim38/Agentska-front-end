@@ -29,6 +29,9 @@ import { AuthInterceptorProvider} from './auth.interceptor';
 import { RequestListAdminComponent } from './components/request-list-admin/request-list-admin.component';
 import { RequestListUserComponent } from './components/request-list-user/request-list-user.component';
 import { CompanyHomeComponent } from './components/company-home/company-home.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { SalariesComponent } from './components/salaries/salaries.component';
+import { InterviewComponent } from './components/interview/interview.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { CompanyHomeComponent } from './components/company-home/company-home.com
     MakeRequestComponent,
     RequestListAdminComponent,
     RequestListUserComponent,
-    CompanyHomeComponent
+    CompanyHomeComponent,
+    CommentsComponent,
+    SalariesComponent,
+    InterviewComponent
   ],
   imports: [
     BrowserModule,

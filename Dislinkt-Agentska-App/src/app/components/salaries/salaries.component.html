@@ -1,0 +1,27 @@
+<br>
+<h2 style="text-align: center">{{company.companyDetails.name}}</h2>
+<h4 style="text-align: center;">Rating: {{company.companyDetails.rating}}</h4>
+<br>
+<div>
+    <table id="requests">
+        <thead>
+          <tr>
+            <th style="text-align: center">
+                <button class="button" (click)="goHome()">O kompaniji</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button" (click)="goComments()">Komentari</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button" style="background-color: #228ab9; color: white" >Plata i benefiti</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button" (click)="goInterview()">Intervju</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button">Poslovi</button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+</div>

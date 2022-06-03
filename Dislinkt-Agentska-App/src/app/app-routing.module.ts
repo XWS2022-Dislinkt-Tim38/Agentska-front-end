@@ -12,6 +12,9 @@ import { MakeRequestComponent } from './components/make-request/make-request.com
 import { RequestListAdminComponent } from './components/request-list-admin/request-list-admin.component';
 import { RequestListUserComponent } from './components/request-list-user/request-list-user.component';
 import { CompanyHomeComponent } from './components/company-home/company-home.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { SalariesComponent } from './components/salaries/salaries.component';
+import { InterviewComponent } from './components/interview/interview.component';
 
 
 const routes: Routes = [
@@ -56,6 +59,21 @@ const routes: Routes = [
     path: "company/:id",
     component: CompanyHomeComponent
   },
+  
+  {
+    path: "company/:id/comments",
+    component: CommentsComponent
+  },
+
+  {
+    path: "company/:id/salaries",
+    component: SalariesComponent
+  },
+
+  {
+    path: "company/:id/interview",
+    component: InterviewComponent
+  }
 
 ];
 
