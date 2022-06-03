@@ -16,6 +16,8 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { SalariesComponent } from './components/salaries/salaries.component';
 import { InterviewComponent } from './components/interview/interview.component';
 import { OffersComponent } from './components/offers/offers.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { LinkAccountComponent } from './components/link-account/link-account.component';
 
 
 const routes: Routes = [
@@ -78,7 +80,19 @@ const routes: Routes = [
 
   { path: "company/:id/offers",
     component: OffersComponent,
-  }
+  },
+
+  { 
+    path: "user/:username",
+    canActivate: [LoggedInGuard],
+    component: UserProfileComponent,
+  },
+
+  { path: "user/:username/linkaccount",
+    canActivate: [LoggedInGuard, HasRoleGuard],
+    component: LinkAccountComponent,
+    data: { role: 'COMPANY_OWNER'}
+  },
 ];
 
 @NgModule({

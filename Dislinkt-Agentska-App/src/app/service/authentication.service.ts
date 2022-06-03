@@ -46,11 +46,9 @@ export class AuthenticationService {
                          
           this.storeToken(response.accessToken)
           this.loggedUser = this.getUser(response.accessToken) 
-          //console.log("ROLE: " + this.loggedUser?.role);
-        })   
-                                      
-      )
-        
+          window.location.href= environment.baserUrlWebsite   
+        })                                   
+      )  
   }
 
   private getUser(token: string): UserTokenModel | null {
@@ -67,27 +65,8 @@ export class AuthenticationService {
 
   public logout() {
     //this.router.navigate(['/login'])
-    window.location.href="http://localhost:4200/login"
+    window.location.href= environment.baserUrlWebsite + "/login"
     localStorage.removeItem("regUserToken")
   }
-
-  public passwordlessLoginSendEmail(email: string): Observable<any>{
-    return this.http.post(environment.baseUrlUserService + "/passwordless", email)
-    
-  }
-
-  public passwordlessLogin(token: string): Observable<any>{
-    this.router.navigate(['/'])
-    return this.http.post(environment.baseUrlAuthService + "/passwordlesslogin", token).pipe(
-      tap((response: any) => {
-                     
-        this.storeToken(response.accessToken)
-        this.loggedUser = this.getUser(response.accessToken)               
-        
-        console.log(this.loggedUser)
-      })                            
-    )
-  }
-    
 
 }

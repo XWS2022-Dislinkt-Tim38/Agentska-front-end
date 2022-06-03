@@ -8,7 +8,11 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class NavigationComponent implements OnInit {
 
+  
   constructor(public authService: AuthenticationService) { }
+
+  username?: string = this.authService.loggedUser?.sub;
+  userId?: string = this.authService.loggedUser?.userId;
 
   ngOnInit(): void {
    

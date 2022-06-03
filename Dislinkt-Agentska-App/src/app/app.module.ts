@@ -34,7 +34,9 @@ import { SalariesComponent } from './components/salaries/salaries.component';
 import { InterviewComponent } from './components/interview/interview.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { OffersComponent } from './components/offers/offers.component';
-import { MatChipsModule} from '@angular/material/chips'
+import { MatChipsModule} from '@angular/material/chips';
+import { LinkAccountComponent } from './components/link-account/link-account.component'
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { MatChipsModule} from '@angular/material/chips'
     CommentsComponent,
     SalariesComponent,
     InterviewComponent,
-    OffersComponent
+    OffersComponent,
+    UserProfileComponent,
+    LinkAccountComponent
   ],
   imports: [
     BrowserModule,
