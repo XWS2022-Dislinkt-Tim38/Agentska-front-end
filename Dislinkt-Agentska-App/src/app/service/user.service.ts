@@ -37,4 +37,12 @@ export class UserService {
         return this.user;
     }
 
+    public linkAccount(username: string, password: string): Observable<any>{
+        return this.http.put(environment.baseUrlUserMicroservice + "/link", {username, password}, {responseType: 'text'})
+    }
+
+    public setKey(userId: string, keyValue: string): Observable<any>{
+        return this.http.put(environment.baseUrlUserService + "/key", {userId, keyValue})
+    }
+
 }
