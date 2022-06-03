@@ -34,31 +34,31 @@
 <br>
 <div width="80%">
     <div *ngIf="flagOffer">
-        <form style="text-align: center;" [formGroup]="offerForm">
+        <form style="text-align: center;">
             <div id="leftbox0"><p>&nbsp;</p></div>
             <div id="leftbox1">
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Title</mat-label>
-                        <input matInput formControlName="title" name="title" [(ngModel)]="title" required>     
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="title" required>     
                     </mat-form-field>
                 </div>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Content</mat-label>
-                        <input matInput formControlName="content" name="content" [(ngModel)]="content" required>  
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="content" required>  
                     </mat-form-field>
                 </div>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Company</mat-label>
-                        <input matInput formControlName="company" name="company" [(ngModel)]="company" required>       
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="company" required>       
                     </mat-form-field>
                 </div>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>City</mat-label>
-                        <input matInput formControlName="city" name="city" [(ngModel)]="city" required>     
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="city" required>     
                     </mat-form-field>
                 </div>
             </div>
@@ -67,26 +67,25 @@
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Industry</mat-label>
-                        <input matInput formControlName="industry" name="industry" [(ngModel)]="industry" required>     
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="industry" required>     
                     </mat-form-field>
                 </div>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Field</mat-label>
-                        <input matInput formControlName="field" name="field" [(ngModel)]="field" required>     
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="field" required>     
                     </mat-form-field>
                 </div>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Seniority</mat-label>
-                        <input matInput formControlName="seniority" name="seniority" [(ngModel)]="seniority" required>     
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="seniority" required>     
                     </mat-form-field>
                 </div>
-                
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Work type</mat-label>
-                        <input matInput formControlName="workType" name="workType" [(ngModel)]="workType" required>      
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="workType" required>      
                     </mat-form-field>
                 </div>
             </div>
@@ -94,12 +93,12 @@
     </div>
     <div id="middlebox"><br></div>
     <div *ngIf="flagOffer">
-        <form style="text-align: center;" [formGroup]="offerForm">
+        <form style="text-align: center;">
             <div id="rightbox1">
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                     <mat-label>Requirements</mat-label>
-                    <input matInput formControlName="requirement" name="requirement" [(ngModel)]="requirement" required>     
+                    <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="requirement" required>     
                     </mat-form-field>
                 </div>
                 <div fxFlex="100%">
@@ -108,7 +107,7 @@
                 <br>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%">
-                        <input matInput [matDatepicker]="picker" formControlName="publishDate" name="publishDate" [(ngModel)]="publishDate" required>
+                        <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone:true}" [(ngModel)]="publishDate" required>
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -117,7 +116,7 @@
                 <br>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%">
-                        <input matInput [matDatepicker]="picker1" formControlName="publishDate" name="publishDate" [(ngModel)]="deadlineDate" required>
+                        <input matInput [matDatepicker]="picker1" [ngModelOptions]="{standalone:true}" [(ngModel)]="deadlineDate" required>
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
@@ -144,9 +143,6 @@
     <button style="width:100px" mat-stroked-button (click)="cancelOffer()">Cancel</button>
     <button style="margin-left: 20px; width:100px" mat-stroked-button (click)="createOffer()">Send</button>
 </div>
-
-
-
 
 <div style="margin-left: 5px; margin-right: 5px;">
     <br>

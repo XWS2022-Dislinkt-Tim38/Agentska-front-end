@@ -74,14 +74,12 @@ export class OffersComponent implements OnInit {
     publishDate: new FormControl('', Validators.required), //datepicker
     deadlineDate: new FormControl('', Validators.required), //datepicker
     city: new FormControl('', Validators.required),
-    requirementsList: new FormControl('', Validators.required),
     requirement: new FormControl('', Validators.required)
   });
 
   getCompany() {
     this.subs.push(this.companyService.getCompany(this.idCompany).subscribe((response: CompanyModel) => {
       this.companyMod = response;
-      console.log(this.company);
     }, (error: HttpErrorResponse) => {
       console.log(error);
     }));
@@ -127,7 +125,7 @@ export class OffersComponent implements OnInit {
   }
 
   createOffer() {
-    if(this.offerForm.valid){
+    if(this.city!='' && this.company!='' && this.content!='' && this.field!='' && this.industry!='' && this.requirementsList!=[] && this.seniority!='' && this.title!='' && this.workType!=''){
       this.offer.city = this.city;
       this.offer.company = this.company;
       this.offer.content = this.content;
@@ -146,7 +144,7 @@ export class OffersComponent implements OnInit {
         window.location.reload();
       });
     }else{
-      console.log(this.city+ " " + this.content+" " + this.deadlineDate+" " + this.field+" " + this.industry+" " + this.publishDate+" " + this.requirementsList+" " + this.seniority+" " + this.title);
+      console.log(this.company + " " + this.workType + " " + this.city+ " " + this.content+" " + this.deadlineDate+" " + this.field+" " + this.industry+" " + this.publishDate+" " + this.requirementsList+" " + this.seniority+" " + this.title);
       console.log('Failed', this.offerForm.invalid);
       alert('Invalid input. Try again');
       return;
