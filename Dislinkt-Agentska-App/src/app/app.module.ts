@@ -26,6 +26,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CompanyListComponent } from './components/company-list/company-list.component';
 import { MakeRequestComponent } from './components/make-request/make-request.component';
 import { AuthInterceptorProvider} from './auth.interceptor';
+import { OffersComponent } from './components/offers/offers.component';
+import { MatChipsModule} from '@angular/material/chips'
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { AuthInterceptorProvider} from './auth.interceptor';
     AddCompanyComponent,
     CompanyDetailsComponent,
     CompanyListComponent,
-    MakeRequestComponent
+    MakeRequestComponent,
+    OffersComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { AuthInterceptorProvider} from './auth.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule
 
   ],
   providers: [AuthInterceptorProvider],

@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   "baseUrlUserService": "http://localhost:8020/user",
   "baseUrlAuthService": "http://localhost:8020/auth",
-  "baseUrlTokenService": "http://localhost:8020/token"
+  "baseUrlTokenService": "http://localhost:8020/token",
+  "baseUrlOfferService": "http://localhost:8020/offer"
 };
 
 /*

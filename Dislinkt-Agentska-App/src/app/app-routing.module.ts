@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CompanyDetailsComponent } from './components/company-details/company-details.component';
 import { MakeRequestComponent } from './components/make-request/make-request.component';
+import { OffersComponent } from './components/offers/offers.component';
 
 
 const routes: Routes = [
@@ -36,9 +37,11 @@ const routes: Routes = [
     component: MakeRequestComponent,
     canActivate: [LoggedInGuard, HasRoleGuard],
     data: { role: 'USER'}
+  },
+
+  { path: "offers",
+    component: OffersComponent,
   }
-
-
 ];
 
 @NgModule({
