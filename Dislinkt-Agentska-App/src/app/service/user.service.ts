@@ -20,19 +20,6 @@ export class UserService {
     subs: Subscription[] = [];
 
     constructor(private http: HttpClient, private auth: AuthenticationService) { }
-    
-    public loadUser(): UserModel | undefined{
-        if (!this.token) {
-          return;
-        }
-        this.userToken = JSON.parse(atob(this.token.split('.')[1])) as UserTokenModel;
-        var username = this.userToken.sub;
-        this.subs.push(this.getUser(username).subscribe((response: UserModel) => {
-          this.currentUser = response;
-        }));
-    
-        return this.currentUser;
-    }
 
     public testAdmin(): Observable<any>{
         return this.http.get(environment.baseUrlUserService + "/role/testadmin");

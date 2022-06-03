@@ -32,6 +32,7 @@ import { CompanyHomeComponent } from './components/company-home/company-home.com
 import { CommentsComponent } from './components/comments/comments.component';
 import { SalariesComponent } from './components/salaries/salaries.component';
 import { InterviewComponent } from './components/interview/interview.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { InterviewComponent } from './components/interview/interview.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSliderModule
 
   ],
   providers: [AuthInterceptorProvider],

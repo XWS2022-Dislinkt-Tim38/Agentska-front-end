@@ -25,3 +25,43 @@
         </thead>
       </table>
 </div>
+<br>
+<div style="text-align: center;" >
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" (click)="openCommentDialog()">Ostavi komentar</button>
+</div>
+<br>
+<div *ngIf="flagComment">
+    <form style="text-align: center;" [formGroup]="commentForm">
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" name="title" [(ngModel)]="title" required>     
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Content</mat-label>
+            <textarea matInput formControlName="content" name="content" [(ngModel)]="content"></textarea> 
+          </mat-form-field>
+        </div>
+    </form>
+</div>
+<div style="text-align: center"  *ngIf="flagComment">
+    <div >
+        <mat-label>Rating</mat-label>
+        <mat-slider thumbLabel [displayWith]="formatLabel" min="1" max="5" step="1" [(ngModel)]="rating" aria-label="units"></mat-slider>
+    </div>
+    <button style="margin-right: 2%" mat-stroked-button (click)="cancelComment()">Cancel</button>
+    <button mat-stroked-button (click)="createComment()">Send</button>
+</div>
+<div  *ngFor="let comment of comments">
+    <mat-card style="width: 60%; margin-left: 20%">
+        <mat-card-header style="background-color: rgb(255,64,129); padding: 0">
+            <mat-card-title style="color: white"><br>{{comment.title}}<br></mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-subtitle>Ocena: {{comment.rating}}</mat-card-subtitle>
+        <mat-card-subtitle>Komentar: <br>{{comment.content}}</mat-card-subtitle>
+    </mat-card>
+    <br>
+</div>
