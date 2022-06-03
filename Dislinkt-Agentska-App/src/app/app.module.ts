@@ -28,6 +28,7 @@ import { MakeRequestComponent } from './components/make-request/make-request.com
 import { AuthInterceptorProvider} from './auth.interceptor';
 import { RequestListAdminComponent } from './components/request-list-admin/request-list-admin.component';
 import { RequestListUserComponent } from './components/request-list-user/request-list-user.component';
+import { CompanyHomeComponent } from './components/company-home/company-home.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { RequestListUserComponent } from './components/request-list-user/request
     CompanyListComponent,
     MakeRequestComponent,
     RequestListAdminComponent,
-    RequestListUserComponent
+    RequestListUserComponent,
+    CompanyHomeComponent
   ],
   imports: [
     BrowserModule,

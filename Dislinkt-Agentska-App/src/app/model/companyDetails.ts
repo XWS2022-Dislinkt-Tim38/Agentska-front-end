@@ -6,6 +6,7 @@ export class CompanyDetailsModel {
         country?: string;
         website?: string;
         industry?: string;
+        rating?: number;
         techStack?: Array<String>;
         followers?: Array<String>;
 }

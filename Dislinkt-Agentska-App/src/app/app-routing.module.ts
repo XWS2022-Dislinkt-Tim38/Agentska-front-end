@@ -11,6 +11,7 @@ import { CompanyDetailsComponent } from './components/company-details/company-de
 import { MakeRequestComponent } from './components/make-request/make-request.component';
 import { RequestListAdminComponent } from './components/request-list-admin/request-list-admin.component';
 import { RequestListUserComponent } from './components/request-list-user/request-list-user.component';
+import { CompanyHomeComponent } from './components/company-home/company-home.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,12 @@ const routes: Routes = [
   { path: "requests",
     component: RequestListUserComponent
     
-  }
+  },
+  
+  {
+    path: "company/:id",
+    component: CompanyHomeComponent
+  },
 
 ];
 

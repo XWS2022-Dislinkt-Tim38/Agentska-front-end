@@ -1,0 +1,46 @@
+<br>
+<h2 style="text-align: center">{{company.companyDetails.name}}</h2>
+<h4 style="text-align: center;">Rating: {{company.companyDetails.rating}}</h4>
+<br>
+<div>
+    <table id="requests">
+        <thead>
+          <tr>
+            <th style="text-align: center">
+                <button class="button" style="background-color: #228ab9; color: white">O kompaniji</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button">Komentari</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button">Plata i benefiti</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button">Intervju</button>
+            </th>
+            <th style="text-align: center">
+                <button class="button">Poslovi</button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+
+      <table style="width: 90%; margin-left: 5%; table-layout: fixed ;" id="requests">
+        <tr>
+            <td>Web</td>
+            <td>{{company.companyDetails.website}}</td>
+            <td>Country</td>
+            <td>{{company.companyDetails.country}}</td>
+            <td>City</td>
+            <td>{{company.companyDetails.city}}</td>
+        </tr>
+        <tr>
+            <td>Industry</td>
+            <td>{{company.companyDetails.industry}}</td>
+            <td>Foundation</td>
+            <td>{{company.companyDetails.foundation}}</td>
+            <td>Number of employees</td>
+            <td>{{company.companyDetails.numberOfEmployees}}</td>
+        </tr>
+    </table>
+</div>

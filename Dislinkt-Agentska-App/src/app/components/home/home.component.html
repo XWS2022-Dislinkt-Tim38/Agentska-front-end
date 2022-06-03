@@ -1,3 +1,23 @@
-<div>
-    <h2 style="margin-left: 2%;">Dis home</h2>
+<div *ngFor="let company of companies" style="margin-left: 40%; margin-right: 40%">
+    <table id="requests">
+        <tr>
+            <th style="text-align: center;" colspan="2" scope="colgroup">{{company.companyDetails.name}}</th>
+        </tr>
+        <tr>
+            <td>Rating:</td>
+            <td>{{company.companyDetails.rating}}</td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td>{{company.companyDetails.city}}</td>
+        </tr>
+        <tr>
+            <td>Industry:</td>
+            <td>{{company.companyDetails.industry}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" scope="colgroup" style="text-align: center;"><button class="button" routerLink="company/{{company.id}}">Pogledaj kompaniju</button></td>
+        </tr>
+    </table>
+    <br>
 </div>

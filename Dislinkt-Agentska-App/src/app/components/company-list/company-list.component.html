@@ -1,7 +1,23 @@
 <br>
+<h2 style="text-align: center" >YOUR COMPANIES</h2>
 
-
-<div *ngFor="let company of companies">
-  <h2 style="text-align: center" >YOUR COMPANIES</h2>
-    <a style="margin-left: 48%" class="itemSpacer" mat-flat-button color="primary" routerLink={{company.id}}>{{ company.companyDetails.name }}</a>
+<div style="margin-left: 25%; margin-right: 25%">
+    <table style="text-align: center" id="requests">
+        <thead>
+          <tr>
+            <th style="text-align: center">Name</th>
+            <th style="text-align: center">City</th>
+            <th style="text-align: center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td>{{ company.companyDetails.name}}</td>
+            <td>{{ company.companyDetails.city }}</td>
+            <td>
+                <button routerLink="{{company.id}}" class="button">VIEW</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 </div>

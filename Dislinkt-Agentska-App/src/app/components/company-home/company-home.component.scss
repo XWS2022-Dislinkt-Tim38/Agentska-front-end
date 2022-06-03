@@ -6,33 +6,33 @@
 }
   
 #requests td, #requests th {
-    border: 1px solid #ddd;
+    border: none;
     padding: 8px;
 }
-  
-#requests tr:nth-child(even){background-color: #f2f2f2;}
   
 #requests th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: white;
     color: white;
 }
 .button {
-    background-color: #0586b1;
-    color: white;
+    background-color: #E5E5E5;
+    color: black;
     border: none;
     text-align: center;
+    align-items: center;
+    line-height: 22px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     transition-duration: 0.4s;
-    height: 30px;
-    width: 200px;
+    width: 300px;
+    height: 40px;
   }
   .button:hover {
-    cursor: pointer;
-    background-color: #045672;
+    background-color: #CDCDCD;
     color: white;
+    cursor: pointer;
   }

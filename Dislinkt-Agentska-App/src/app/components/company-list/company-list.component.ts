@@ -30,5 +30,4 @@ export class CompanyListComponent implements OnInit {
         alert(error.message);
       }));
   }
-
 }
