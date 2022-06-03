@@ -25,11 +25,13 @@ export class LinkAccountComponent implements OnInit {
       console.log(key)
       if(key === "")
         alert("Credentials are incorrect. Unable to connect accounts!")
+      else {
+        this.userService.setKey(this.userId, key).subscribe((updatedUser: UserModel) => {
+          alert("Successfully linked accounts!")
+          console.log(updatedUser)
+        })
+      }
       
-      this.userService.setKey(this.userId, key).subscribe((updatedUser: UserModel) => {
-        alert("Successfully linked accounts!")
-        console.log(updatedUser)
-      })
     })
   }
 
