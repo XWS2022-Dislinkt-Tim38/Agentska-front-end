@@ -40,7 +40,6 @@ export class CommentsComponent implements OnInit {
   ngOnInit(): void {
 
     if(this.auth.isLoggedIn$){
-      
      this.userService.getUser(this.auth.loggedUser?.sub).subscribe((response: UserModel) => {
         this.currentUser = response;
         console.log(this.currentUser)
@@ -87,6 +86,10 @@ export class CommentsComponent implements OnInit {
 
   goInterview() {
     this.router.navigate(['/company/' + this.company.id + '/interview']);
+  }
+
+  goOffers() {
+    this.router.navigate(['/company/' + this.company.id + '/offers']);
   }
 
   formatLabel(value: number) {

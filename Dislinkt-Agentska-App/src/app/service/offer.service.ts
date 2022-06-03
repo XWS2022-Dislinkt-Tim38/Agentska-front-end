@@ -11,11 +11,17 @@ import { OfferModel } from "../model/offer";
 
 export class OfferService {
 
-    constructor(private http: HttpClient) { }
+  private offerUrl = 'http://localhost:8020/offer'
 
-    public getAllOffers(): Observable<any> {
-        return this.http.get(environment.baseUrlOfferService);
-      }
+  constructor(private http: HttpClient) { }
+
+  public getAllOffers(): Observable<any> {
+    return this.http.get(environment.baseUrlOfferService);
+  }
+
+  public addOffer(offer?: OfferModel, id?: string): Observable<any>{
+    return this.http.post(`${this.offerUrl}/${id}`, offer);
+  }
 
 
     

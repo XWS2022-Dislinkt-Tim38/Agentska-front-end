@@ -46,4 +46,8 @@ export class SalariesComponent implements OnInit {
     this.router.navigate(['/company/' + this.company.id + '/interview']);
   }
 
+  goOffers() {
+    this.router.navigate(['/company/' + this.company.id + '/offers']);
+  }
+
 }

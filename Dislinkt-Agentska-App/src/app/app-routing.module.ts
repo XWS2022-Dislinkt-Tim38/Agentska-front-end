@@ -76,7 +76,7 @@ const routes: Routes = [
     component: InterviewComponent
   },
 
-  { path: "offers",
+  { path: "company/:id/offers",
     component: OffersComponent,
   }
 ];
