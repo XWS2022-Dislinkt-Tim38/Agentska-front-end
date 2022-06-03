@@ -4,5 +4,7 @@ export class CommentModel {
     title?: string;
     content?: string;
     datePosted?: Date;
+    username?: string;
     rating?: number;
+    
 }

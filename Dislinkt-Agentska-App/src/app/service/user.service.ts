@@ -41,4 +41,8 @@ export class UserService {
         return this.user;
     }
 
+    public getUserById(id?: string) {
+        return this.http.get<UserModel>(`${environment.baseUrlUserService}/${id}`);
+    }
+
 }

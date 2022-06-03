@@ -1,6 +1,6 @@
 <br>
 <h2 style="text-align: center">{{company.companyDetails.name}}</h2>
-<h4 style="text-align: center;">Rating: {{company.companyDetails.rating}}</h4>
+<h4 style="text-align: center;">Rating: {{company.companyDetails.rating?.toFixed(2)}}</h4>
 <br>
 <div>
     <table id="requests">
@@ -49,19 +49,24 @@
 <div style="text-align: center"  *ngIf="flagComment">
     <div >
         <mat-label>Rating</mat-label>
-        <mat-slider thumbLabel [displayWith]="formatLabel" min="1" max="5" step="1" [(ngModel)]="rating" aria-label="units"></mat-slider>
+        <mat-slider thumbLabel [displayWith]="formatLabel" min="1" max="5" step="0.1" [(ngModel)]="rating" aria-label="units"></mat-slider>
     </div>
     <button style="margin-right: 2%" mat-stroked-button (click)="cancelComment()">Cancel</button>
     <button mat-stroked-button (click)="createComment()">Send</button>
 </div>
 <div  *ngFor="let comment of comments">
     <mat-card style="width: 60%; margin-left: 20%">
-        <mat-card-header style="background-color: rgb(255,64,129); padding: 0">
-            <mat-card-title style="color: white"><br>{{comment.title}}<br></mat-card-title>
-        </mat-card-header>
-        <br>
-        <mat-card-subtitle>Ocena: {{comment.rating}}</mat-card-subtitle>
-        <mat-card-subtitle>Komentar: <br>{{comment.content}}</mat-card-subtitle>
+        <mat-card>
+            <mat-card-header style="background-color: #228ab9; padding: 0">
+                <mat-card-title style="color: white"><br>{{comment.rating}}<br></mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-subtitle style="font-size: large; color:#228ab9" >{{comment.username}}</mat-card-subtitle>
+            <mat-card-subtitle>Ocena: </mat-card-subtitle>
+            <mat-card-subtitle style="color: black">{{comment.rating}}</mat-card-subtitle>
+            <mat-card-subtitle>Komentar: </mat-card-subtitle>
+            <mat-card-subtitle style="color: black">{{comment.content}}</mat-card-subtitle>
+        </mat-card>    
     </mat-card>
     <br>
 </div>
