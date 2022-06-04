@@ -8,8 +8,9 @@ export const environment = {
   "baseUrlAuthService": "http://localhost:8020/auth",
   "baseUrlTokenService": "http://localhost:8020/token",
   "baseUrlOfferService": "http://localhost:8020/offer",
+  "baseSalaryService": "http://localhost:8020/salary",
   "baserUrlWebsite": "http://localhost:4201",
-
+  
   "baseUrlUserMicroservice": "http://localhost:8000/user",
 };
 
