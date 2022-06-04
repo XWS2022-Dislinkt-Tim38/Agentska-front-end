@@ -89,7 +89,8 @@ export class MakeRequestComponent implements OnInit {
         }
         this.companyRegistration = {
           idUser: this.currentUser.id,
-          companyDetails: companyDet
+          companyDetails: companyDet,
+          offers: []
         }
         this.request = {
           idUser: this.currentUser.id,

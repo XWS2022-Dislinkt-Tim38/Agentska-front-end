@@ -26,10 +26,8 @@
       </table>
 </div>
 
-
-
 <div style="text-align: center;" >
-    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagOffer" (click)="openOfferDialog()">Ostavi komentar</button>
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagOffer" (click)="openOfferDialog()">Napravi pondu</button>
 </div>
 <br>
 <div width="80%">
@@ -51,25 +49,20 @@
                 </div>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
-                        <mat-label>Company</mat-label>
-                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="company" required>       
-                    </mat-form-field>
-                </div>
-                <div fxFlex="100%">
-                    <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>City</mat-label>
                         <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="city" required>     
                     </mat-form-field>
                 </div>
-            </div>
-            <div id="middlebox"><br></div>
-            <div id="leftbox2">
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Industry</mat-label>
                         <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="industry" required>     
                     </mat-form-field>
                 </div>
+            </div>
+            <div id="middlebox"><br></div>
+            <div id="leftbox2">
+                
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%" appearance="fill" class="form-field">
                         <mat-label>Field</mat-label>
@@ -82,29 +75,6 @@
                         <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="seniority" required>     
                     </mat-form-field>
                 </div>
-                <div fxFlex="100%">
-                    <mat-form-field style="width:100%" appearance="fill" class="form-field">
-                        <mat-label>Work type</mat-label>
-                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="workType" required>      
-                    </mat-form-field>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div id="middlebox"><br></div>
-    <div *ngIf="flagOffer">
-        <form style="text-align: center;">
-            <div id="rightbox1">
-                <div fxFlex="100%">
-                    <mat-form-field style="width:100%" appearance="fill" class="form-field">
-                    <mat-label>Requirements</mat-label>
-                    <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="requirement" required>     
-                    </mat-form-field>
-                </div>
-                <div fxFlex="100%">
-                    <button mat-stroked-button (click)="addRequirement()">Attach</button>
-                </div>
-                <br>
                 <div fxFlex="100%">
                     <mat-form-field style="width:100%">
                         <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone:true}" [(ngModel)]="publishDate" required>
@@ -124,6 +94,35 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div id="middlebox"><br></div>
+    <div *ngIf="flagOffer">
+        <form style="text-align: center;">
+            <div id="rightbox1">
+                <div fxFlex="100%">
+                    <mat-form-field style="width:100%" appearance="fill" class="form-field">
+                        <mat-label>Work type</mat-label>
+                        <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="workType" required>      
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100%">
+                    <mat-form-field style="width:100%" appearance="fill" class="form-field">
+                    <mat-label>Requirements</mat-label>
+                    <input matInput [ngModelOptions]="{standalone:true}" [(ngModel)]="requirement" required>     
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100%">
+                    <button mat-stroked-button (click)="addRequirement()">Attach</button>
+                </div>
+                <div fxFlex="100%">
+                    <br><br>
+                    <button style="width:100px" mat-stroked-button (click)="cancelOffer()">Cancel</button>
+                    <button style="margin-left: 20px; width:100px" mat-stroked-button (click)="createOffer()">Send</button>
+                </div>
+                <br>
+                
+            </div>
+        </form>
         <div id="middlebox"><br></div>
         <div style="text-align: left;" id="rightbox2">
                 <table style="width: 100%" style="text-align: left;" mat-table >
@@ -140,8 +139,7 @@
 <div *ngIf="flagOffer" style="text-align: center">
     <hr style="opacity:0; width: 100%" >
     <br>
-    <button style="width:100px" mat-stroked-button (click)="cancelOffer()">Cancel</button>
-    <button style="margin-left: 20px; width:100px" mat-stroked-button (click)="createOffer()">Send</button>
+    
 </div>
 
 <div style="margin-left: 5px; margin-right: 5px;">
@@ -160,7 +158,7 @@
             </mat-chip-list>
             <br>
             <mat-card-actions style="margin-left: 2px ;">
-                <button mat-flat-button color="primary">View</button>
+                <button mat-flat-button color="primary" (click)="viewOffer(offer.id)">View</button>
             </mat-card-actions>
             <mat-card-subtitle> Deadline: {{offer.deadlineDate}}</mat-card-subtitle>              
         </mat-card>

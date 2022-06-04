@@ -77,6 +77,9 @@ export class CompanyDetailsComponent implements OnInit {
     this.company.companyDetails.country = this.country;
     this.company.companyDetails.website = this.website;
     this.company.companyDetails.industry = this.industry;
+    this.subs.push(this.companyService.editCompany(this.company).subscribe(response => {
+      console.log(response);
+    }));
   }
 
 

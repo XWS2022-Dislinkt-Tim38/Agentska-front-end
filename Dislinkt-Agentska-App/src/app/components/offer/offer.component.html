@@ -1,0 +1,75 @@
+<div class="container">
+    <br><br>
+        <h3 style="text-align: center">{{offer.title}}</h3>
+        <br>
+        <div style="text-align: center">
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Company</mat-label>
+                <input matInput [(ngModel)]="offer.company" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Industry</mat-label>
+                <input matInput [(ngModel)]="offer.industry" readonly="{{!flagOwner}}" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>City</mat-label>
+                <input matInput [(ngModel)]="offer.city" readonly="{{!flagOwner}}" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Field</mat-label>
+                <input matInput [(ngModel)]="offer.field" readonly="{{!flagOwner}}" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Seniority</mat-label>
+                <input matInput [(ngModel)]="offer.seniority" readonly="{{!flagOwner}}" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Work type</mat-label>
+                <input matInput [(ngModel)]="offer.workType" readonly="{{!flagOwner}}" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                  <mat-label>Publish date</mat-label>
+                  <input matInput [(ngModel)]="offer.publishDate" [matDatepicker]="picker" readonly="{{!flagOwner}}" required>
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                  <mat-label>Deadline date</mat-label>
+                  <input matInput [(ngModel)]="offer.deadlineDate" [matDatepicker]="picker1" readonly="{{!flagOwner}}" required>
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Content</mat-label>
+                <input matInput [(ngModel)]="offer.content" readonly="{{!flagOwner}}" required>   
+                </mat-form-field>
+            </div>
+            <br>
+            <div fxFlex="100%">
+                <button mat-stroked-button color="primary" *ngIf="flagOwner" (click)="cancelEdit()">Undo</button>
+                <button style="margin-left: 20px" mat-stroked-button color="primary" *ngIf="flagOwner" (click)="editOffer()">Edit</button>
+                <button style="margin-left: 20px" mat-stroked-button color="primary" (click)="goBack()">Back</button>
+                <br><br><br><br>
+                <hr style="opacity: 0">
+            </div>
+        </div>
+</div>

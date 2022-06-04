@@ -108,8 +108,8 @@ export class AddCompanyComponent implements OnInit {
         }
         this.companyRegistration = {
           idUser: this.currentUser.id,
-          companyDetails: companyDet
-          
+          companyDetails: companyDet,
+          offers: []
         }
         this.companyService.addCompany(this.companyRegistration).subscribe(response => {
           this.flag = true;

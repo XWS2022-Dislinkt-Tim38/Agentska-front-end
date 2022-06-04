@@ -1,23 +1,66 @@
-<div *ngFor="let company of companies" style="margin-left: 40%; margin-right: 40%">
-    <table id="requests">
-        <tr>
-            <th style="text-align: center;" colspan="2" scope="colgroup">{{company.companyDetails.name}}</th>
-        </tr>
-        <tr>
-            <td>Rating:</td>
-            <td>{{company.companyDetails.rating}}</td>
-        </tr>
-        <tr>
-            <td>City:</td>
-            <td>{{company.companyDetails.city}}</td>
-        </tr>
-        <tr>
-            <td>Industry:</td>
-            <td>{{company.companyDetails.industry}}</td>
-        </tr>
-        <tr>
-            <td colspan="2" scope="colgroup" style="text-align: center;"><button class="button" routerLink="company/{{company.id}}">Pogledaj kompaniju</button></td>
-        </tr>
-    </table>
-    <br>
+<div>
+    <br><br><br>
+    <h2 style="text-align: center"> Kompanije</h2>
+    <div style="margin-left: 20%"  class="myBox">
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile *ngFor="let company of companies">
+                <table id="requests">
+                    <tr>
+                        <th style="text-align: center;" colspan="2" scope="colgroup">{{company.companyDetails.name}}</th>
+                    </tr>
+                    <tr>
+                        <td>Rating:</td>
+                        <td>{{company.companyDetails.rating}}</td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td>{{company.companyDetails.city}}</td>
+                    </tr>
+                    <tr>
+                        <td>Industry:</td>
+                        <td>{{company.companyDetails.industry}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" scope="colgroup" style="text-align: center;"><button class="button" routerLink="company/{{company.id}}">Pogledaj kompaniju</button></td>
+                    </tr>
+                </table>
+                <br>
+
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+
+    <br><br><br>
+    <h2 style="text-align: center"> Poslovi</h2>
+    <div class="myBox"  style="margin-left: 20%">
+        <div style="margin-left: 5px; margin-right: 5px;">
+            <br>
+            <mat-card *ngFor="let offer of offers" id> 
+                <mat-card style="width: 900px;">
+                   <mat-card-header style="background-color: rgb(255,64,129); padding: 0;">
+                    <mat-card-title style="color: white"><br>{{offer.title}}<br></mat-card-title>
+                   </mat-card-header>
+                   <br>
+                    <mat-card-subtitle>{{offer.company}} &#9679; {{offer.city}}</mat-card-subtitle>
+                    <mat-card-subtitle>{{offer.seniority}}</mat-card-subtitle>
+                    <mat-chip-list>
+                        <mat-chip  *ngFor="let req of offer.requirements"> {{req}} </mat-chip>
+                    </mat-chip-list>
+                    <br>
+                    <mat-card-actions style="margin-left: 2px ;">
+                        <ng-container *ngFor="let com of companies">
+                            <ng-container *ngIf="com.companyDetails.name===offer.company">
+                                <button mat-flat-button color="primary" (click)="viewOffer(offer.id, com.id)" >View</button> 
+                            </ng-container>
+                    </ng-container>
+                    </mat-card-actions>
+                    <mat-card-subtitle> Deadline: {{offer.deadlineDate}}</mat-card-subtitle>              
+                </mat-card>
+            </mat-card>
+        </div>
+    </div>
+    
 </div>
+
+
+

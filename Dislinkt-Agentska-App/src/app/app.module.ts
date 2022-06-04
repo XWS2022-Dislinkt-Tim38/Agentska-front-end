@@ -37,6 +37,9 @@ import { OffersComponent } from './components/offers/offers.component';
 import { MatChipsModule} from '@angular/material/chips';
 import { LinkAccountComponent } from './components/link-account/link-account.component'
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { OfferComponent } from './components/offer/offer.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -58,7 +61,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     InterviewComponent,
     OffersComponent,
     UserProfileComponent,
-    LinkAccountComponent
+    LinkAccountComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule,
-    MatChipsModule
+    MatChipsModule,
+    ScrollingModule,
+    MatGridListModule
 
   ],
   providers: [AuthInterceptorProvider],

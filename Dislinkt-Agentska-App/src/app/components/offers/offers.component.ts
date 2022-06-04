@@ -53,29 +53,16 @@ export class OffersComponent implements OnInit {
          console.log(this.currentUser)
        });
     }
+    
     this.idCompany = this.route.snapshot.params['id'];
     this.getCompany();
     
 
-    this.offerService.getAllOffers().subscribe((offers: OfferModel[]) => {
+    this.offerService.getAllOffersByCompany(this.idCompany).subscribe((offers: OfferModel[]) => {
         this.offers = offers;
     })
 
   }
-
-  offerForm = new FormGroup({
-    title:  new FormControl('', Validators.required),
-    content: new FormControl('', Validators.required),
-    company: new FormControl('', Validators.required),
-    industry: new FormControl('', Validators.required),
-    field: new FormControl('', Validators.required),
-    seniority: new FormControl('', Validators.required),
-    workType: new FormControl('', Validators.required),
-    publishDate: new FormControl('', Validators.required), //datepicker
-    deadlineDate: new FormControl('', Validators.required), //datepicker
-    city: new FormControl('', Validators.required),
-    requirement: new FormControl('', Validators.required)
-  });
 
   getCompany() {
     this.subs.push(this.companyService.getCompany(this.idCompany).subscribe((response: CompanyModel) => {
@@ -93,6 +80,10 @@ export class OffersComponent implements OnInit {
     this.requirementsList.forEach((value,index)=>{
       if(value==name) this.requirementsList.splice(index,1);
     });
+  }
+
+  viewOffer(offerId?: string) {
+    this.router.navigate(['/company/' + this.companyMod.id + '/offer/' + offerId]);
   }
 
   goHome() {
@@ -125,9 +116,9 @@ export class OffersComponent implements OnInit {
   }
 
   createOffer() {
-    if(this.city!='' && this.company!='' && this.content!='' && this.field!='' && this.industry!='' && this.requirementsList!=[] && this.seniority!='' && this.title!='' && this.workType!=''){
+    if(this.city!='' && this.content!='' && this.field!='' && this.industry!='' && this.requirementsList!=[] && this.seniority!='' && this.title!='' && this.workType!=''){
       this.offer.city = this.city;
-      this.offer.company = this.company;
+      this.offer.company = this.companyMod.companyDetails.name;
       this.offer.content = this.content;
       this.offer.deadlineDate = this.deadlineDate;
       this.offer.field = this.field;
@@ -138,14 +129,13 @@ export class OffersComponent implements OnInit {
       this.offer.title = this.title;
       this.offer.workType = this.workType;
       this.offerService.addOffer(this.offer, this.companyMod.id).subscribe(response => {
-        console.log(response);
+        //console.log(response);
         alert("Offer published!")
         this.flagOffer = false;
         window.location.reload();
       });
     }else{
-      console.log(this.company + " " + this.workType + " " + this.city+ " " + this.content+" " + this.deadlineDate+" " + this.field+" " + this.industry+" " + this.publishDate+" " + this.requirementsList+" " + this.seniority+" " + this.title);
-      console.log('Failed', this.offerForm.invalid);
+      //console.log(this.company + " " + this.workType + " " + this.city+ " " + this.content+" " + this.deadlineDate+" " + this.field+" " + this.industry+" " + this.publishDate+" " + this.requirementsList+" " + this.seniority+" " + this.title);
       alert('Invalid input. Try again');
       return;
     }

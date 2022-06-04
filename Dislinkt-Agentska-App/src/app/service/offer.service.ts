@@ -19,10 +19,20 @@ export class OfferService {
     return this.http.get(environment.baseUrlOfferService);
   }
 
+  public getAllOffersByCompany(idCompany?: string): Observable<any> {
+    return this.http.get(`${environment.baseUrlOfferService}/${idCompany}`);
+  }
+
   public addOffer(offer?: OfferModel, id?: string): Observable<any>{
     return this.http.post(`${this.offerUrl}/${id}`, offer);
   }
 
+  public getOffer(companyId: string, offerId: string) {
+    return this.http.get<OfferModel>(`${this.offerUrl}/${companyId}/${offerId}`);
+  }
 
+  public editOffer(offer: OfferModel, companyId: string){
+    return this.http.put(`${this.offerUrl}/${companyId}`, offer);
+  }
     
 }

@@ -18,6 +18,7 @@ import { InterviewComponent } from './components/interview/interview.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LinkAccountComponent } from './components/link-account/link-account.component';
+import { OfferComponent } from './components/offer/offer.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,11 @@ const routes: Routes = [
     component: LinkAccountComponent,
     data: { role: 'COMPANY_OWNER'}
   },
+
+  { path: "company/:idCompany/offer/:idOffer",
+    component: OfferComponent,
+  }
+
 ];
 
 @NgModule({
