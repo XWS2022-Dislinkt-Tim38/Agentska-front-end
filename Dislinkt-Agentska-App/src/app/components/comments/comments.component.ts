@@ -100,7 +100,11 @@ export class CommentsComponent implements OnInit {
   }
 
   openCommentDialog() {
-    this.flagComment = true;
+    if(this.currentUser.role == 'USER'){
+      this.flagComment = true;
+    } else {
+      alert("Morate biti ulogovani da biste ostavili komentar.");
+    }
   }
 
   createComment() {

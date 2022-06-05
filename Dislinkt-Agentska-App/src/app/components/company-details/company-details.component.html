@@ -48,12 +48,27 @@
                 <input matInput [(ngModel)]="company.companyDetails.website" required>   
                 </mat-form-field>
             </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="company.companyDetails.email" required>   
+                </mat-form-field>
+            </div>
+            <div fxFlex="100%">
+                <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Phone</mat-label>
+                <input matInput [(ngModel)]="company.companyDetails.phone" required>   
+                </mat-form-field>
+            </div>
             <br>
             <div fxFlex="100%">
-                <button mat-stroked-button color="primary" (click)="cancelEdit()">Undo</button>
+                <button mat-stroked-button color="primary" (click)="goBack()">Back</button>
+                <button style="margin-left: 20px" mat-stroked-button color="primary" (click)="cancelEdit()">Undo</button>
                 <button style="margin-left: 20px" mat-stroked-button color="primary" (click)="editCompany()">Edit</button>
+                
             </div>
         </div>
+        <br><br><br>
   </div>
     
     

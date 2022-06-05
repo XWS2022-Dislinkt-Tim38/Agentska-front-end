@@ -7,6 +7,8 @@ export class CompanyDetailsModel {
         website?: string;
         industry?: string;
         rating?: number;
+        email?: string;
+        phone?: string;
         techStack?: Array<String>;
         followers?: Array<String>;
 }

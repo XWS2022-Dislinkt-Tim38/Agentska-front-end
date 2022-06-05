@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { CompanyModel } from 'src/app/model/company';
 import { CompanyService } from 'src/app/service/company.service';
@@ -30,8 +30,10 @@ export class CompanyDetailsComponent implements OnInit {
   country?: string;
   website?: string;
   industry?: string;
+  email?: string;
+  phone?: string;
 
-  constructor(private companyService: CompanyService, private route: ActivatedRoute) {
+  constructor(private router: Router, private companyService: CompanyService, private route: ActivatedRoute) {
     this._flagDisabledEdit.next(true);
     
    }
@@ -58,6 +60,8 @@ export class CompanyDetailsComponent implements OnInit {
       this.country = response.companyDetails.country;
       this.website = response.companyDetails.website;
       this.industry = response.companyDetails.industry;
+      this.email = response.companyDetails.email;
+      this.phone = response.companyDetails.phone;
     }, (error: HttpErrorResponse) => {
       console.log(error);
     }));
@@ -80,6 +84,10 @@ export class CompanyDetailsComponent implements OnInit {
     this.subs.push(this.companyService.editCompany(this.company).subscribe(response => {
       console.log(response);
     }));
+  }
+
+  goBack() {
+    this.router.navigate(['/companies']);
   }
 
 

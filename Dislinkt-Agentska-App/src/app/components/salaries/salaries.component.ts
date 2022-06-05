@@ -88,7 +88,11 @@ export class SalariesComponent implements OnInit {
   }
   
   openSalaryDialog() {
-    this.flagSalary = true;
+    if(this.currentUser.role == 'USER'){
+      this.flagSalary = true;
+    } else {
+      alert("Morate biti ulogovani da biste ostavili komentar.");
+    }
   }
 
   closeSalaryDialog() {

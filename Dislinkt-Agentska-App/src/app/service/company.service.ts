@@ -30,6 +30,10 @@ export class CompanyService {
         return this.http.get<CompanyModel[]>(this.companyUrl);
     }
 
+    public getUserCompanies(userId?: string) {
+        return this.http.get<CompanyModel[]>(`${this.companyUrl}/usercompanies/?userId=${userId}`);
+    }
+
     public getCompany(id: string) {
         return this.http.get<CompanyModel>(`${this.companyUrl}/${id}`);
     }

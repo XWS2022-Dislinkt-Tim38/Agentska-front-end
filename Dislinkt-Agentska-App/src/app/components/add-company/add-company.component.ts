@@ -29,6 +29,7 @@ export class AddCompanyComponent implements OnInit {
   username: string | undefined;
   companyRegistration: CompanyModel = new CompanyModel();
 
+  //ngModel
   name: string = '';
   city: string = '';
   foundation: string = '';
@@ -36,6 +37,8 @@ export class AddCompanyComponent implements OnInit {
   country: string = '';
   website: string = '';
   industry: string = '';
+  email: string = '';
+  phone: string = '';
 
   get token(): any {
     return localStorage.getItem('regUserToken');
@@ -70,7 +73,7 @@ export class AddCompanyComponent implements OnInit {
     }));
   }
 
-  constructor(private companyService: CompanyService, private auth: AuthenticationService, private http: HttpClient, private userService: UserService) {
+  constructor(private router: Router, private companyService: CompanyService, private auth: AuthenticationService, private http: HttpClient, private userService: UserService) {
 
   }
 
@@ -88,6 +91,8 @@ export class AddCompanyComponent implements OnInit {
     country: new FormControl('', Validators.required),
     website: new FormControl('', Validators.required),
     industry: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required)
     
   });
   
@@ -103,6 +108,8 @@ export class AddCompanyComponent implements OnInit {
           country: this.country,
           website: this.website,
           industry: this.industry,
+          email: this.email,
+          phone: this.phone,
           techStack: new Array<String>(),
           followers: new Array<String>()
         }
@@ -114,7 +121,7 @@ export class AddCompanyComponent implements OnInit {
         this.companyService.addCompany(this.companyRegistration).subscribe(response => {
           this.flag = true;
           //alert("Company sent for admin approval.")
-          window.location.href="http://localhost:4200/"
+          this.router.navigate(['/']);
         });
     }else{
       console.log('Failed',this.registerForm.invalid);

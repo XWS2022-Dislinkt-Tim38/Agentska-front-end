@@ -44,14 +44,13 @@ const routes: Routes = [
 
   { path: "request",
     component: MakeRequestComponent,
-    canActivate: [LoggedInGuard, HasRoleGuard],
-    data: { role: 'USER'}
+    canActivate: [LoggedInGuard]
   },
 
   { path: "adminRequests",
     component: RequestListAdminComponent,
     canActivate: [LoggedInGuard, HasRoleGuard],
-    data: { role: 'USER'} 
+    data: { role: 'ADMIN'} 
   },
 
   { path: "requests",

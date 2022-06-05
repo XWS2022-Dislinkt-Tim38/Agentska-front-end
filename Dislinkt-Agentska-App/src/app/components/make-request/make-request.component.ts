@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CompanyModel } from 'src/app/model/company';
 import { RequestModel } from 'src/app/model/request';
@@ -33,6 +34,8 @@ export class MakeRequestComponent implements OnInit {
   country: string = '';
   website: string = '';
   industry: string = '';
+  email: string = '';
+  phone: string = '';
 
   get token(): any {
     return localStorage.getItem('regUserToken');
@@ -51,7 +54,7 @@ export class MakeRequestComponent implements OnInit {
     return this.username;
   }
   
-  constructor(private companyService: CompanyService, private auth: AuthenticationService, private http: HttpClient, private userService: UserService, private requestService: RequestService) {
+  constructor(private router: Router, private companyService: CompanyService, private auth: AuthenticationService, private http: HttpClient, private userService: UserService, private requestService: RequestService) {
 
   }
 
@@ -69,6 +72,8 @@ export class MakeRequestComponent implements OnInit {
     country: new FormControl('', Validators.required),
     website: new FormControl('', Validators.required),
     industry: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required)
     
   });
   
@@ -84,6 +89,8 @@ export class MakeRequestComponent implements OnInit {
           country: this.country,
           website: this.website,
           industry: this.industry,
+          email: this.email,
+          phone: this.phone,
           techStack: new Array<String>(),
           followers: new Array<String>()
         }
@@ -98,7 +105,7 @@ export class MakeRequestComponent implements OnInit {
         }
         this.requestService.createRequest(this.request).subscribe(response => {
           alert("Company sent for admin approval.")
-          window.location.href="http://localhost:4200/"
+          this.router.navigate(['/']);
         });
     }else{
       console.log('Failed', this.requestForm.invalid);

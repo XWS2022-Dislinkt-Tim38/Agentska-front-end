@@ -49,11 +49,24 @@
               <input matInput formControlName="website" name="website" [(ngModel)]="website" required>   
             </mat-form-field>
           </div>
+          <div fxFlex="100%">
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" name="email" [(ngModel)]="email" required>   
+            </mat-form-field>
+          </div>
+          <div fxFlex="100%">
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Phone</mat-label>
+              <input matInput formControlName="phone" name="phone" [(ngModel)]="phone" required>   
+            </mat-form-field>
+          </div>
          
             <br>
             <div fxFlex="100%">
               <button mat-stroked-button color="primary" type="submit">REQUEST</button>
           </div>
+          <br><br><br>
          
         </form>
   </div>

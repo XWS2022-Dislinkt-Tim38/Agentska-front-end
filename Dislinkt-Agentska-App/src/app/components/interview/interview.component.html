@@ -25,7 +25,7 @@
         </thead>
       </table>
 </div>
-<div style="text-align: center;" >
+<div *ngIf="!(this.currentUser.role == 'COMPANY_OWNER' || this.currentUser.role == 'ADMIN')" style="text-align: center;" >
     <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()">Ostavi utisak sa intervjua</button>
 </div>
 <br>

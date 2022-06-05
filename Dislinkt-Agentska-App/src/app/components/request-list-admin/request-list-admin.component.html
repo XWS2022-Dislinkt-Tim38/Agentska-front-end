@@ -16,19 +16,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let request of requests">
-            <td>{{ request.idUser }}</td>
-            <td>{{ request.companyDTO.companyDetails.name }}</td>
-            <td>{{ request.companyDTO.companyDetails.website }}</td>
-            <td>{{ request.companyDTO.companyDetails.industry }}</td>
-            <td>{{ request.companyDTO.companyDetails.country }}</td>
-            <td>{{ request.companyDTO.companyDetails.city }}</td>
-            <td>{{ request.status }}</td>
-            <td>
-                <button style="margin-right: 20px" (click)="accept(request)" class="button">ACCEPT</button>
-                <button  (click)="decline(request)" class="button">DECLINE</button>
-            </td>
-          </tr>
+          <ng-container *ngFor="let request of requests">
+            <tr *ngIf="request.status == 'PENDING'">
+              <td>{{ request.idUser }}</td>
+              <td>{{ request.companyDTO.companyDetails.name }}</td>
+              <td>{{ request.companyDTO.companyDetails.website }}</td>
+              <td>{{ request.companyDTO.companyDetails.industry }}</td>
+              <td>{{ request.companyDTO.companyDetails.country }}</td>
+              <td>{{ request.companyDTO.companyDetails.city }}</td>
+              <td>{{ request.status }}</td>
+              <td>
+                  <button style="margin-right: 20px" (click)="accept(request)" class="button">ACCEPT</button>
+                  <button  (click)="decline(request)" class="button">DECLINE</button>
+              </td>
+            </tr>
+          </ng-container>
+          
         </tbody>
       </table>
 </div>

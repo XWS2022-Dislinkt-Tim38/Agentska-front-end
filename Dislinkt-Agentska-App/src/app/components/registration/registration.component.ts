@@ -47,9 +47,7 @@ export class RegistrationComponent implements OnInit {
     confirmPassword: new FormControl('', Validators.required)
   });
   
-  constructor(
-      private registrationService: RegistrationService
-     
+  constructor(private registrationService: RegistrationService, private router: Router
   ) { }
 
   regSuccess:boolean = false;
@@ -78,7 +76,7 @@ export class RegistrationComponent implements OnInit {
         this.registrationService.addUser(registration).subscribe(response => {
           this.regSuccess = true;
           alert("Confirmation email sent!")
-          window.location.href="http://localhost:4200/login"
+          this.router.navigate(['/login']);
         });
       
     }else{
