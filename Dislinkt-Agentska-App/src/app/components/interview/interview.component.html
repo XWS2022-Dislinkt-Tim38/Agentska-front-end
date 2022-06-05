@@ -25,3 +25,81 @@
         </thead>
       </table>
 </div>
+<div style="text-align: center;" >
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()">Ostavi utisak sa intervjua</button>
+</div>
+<br>
+<div *ngIf="flagComment">
+    <form style="text-align: center;" [formGroup]="commentForm">
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" name="title" [(ngModel)]="title" required>     
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Content</mat-label>
+            <textarea matInput formControlName="content" name="content" [(ngModel)]="content"></textarea> 
+          </mat-form-field>
+        </div>
+    </form>
+</div>
+<div style="text-align: center"  *ngIf="flagComment">
+    <div >
+        <mat-label>Rating</mat-label>
+        <mat-slider thumbLabel [displayWith]="formatLabel" min="1" max="5" step="0.1" [(ngModel)]="rating" aria-label="units"></mat-slider>
+    </div>
+    <br>
+    <div>
+        <label id="example-radio-group-label">Tezina intervjua</label>
+        <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="difficulty">
+        <mat-radio-button class="example-radio-button" *ngFor="let dif of difficulties" [value]="dif">
+            {{dif}}
+        </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <br>
+    <button style="margin-right: 2%" mat-stroked-button (click)="cancelComment()">Cancel</button>
+    <button mat-stroked-button (click)="createInterview()">Send</button>
+</div>
+<br>
+<div >
+  <div style="width: 20%; float:left; margin-left: 30%; text-align: center; align-items: center;">
+        <h2 class="example-h2">Ocena procesa selekcija</h2>
+        <mat-progress-spinner style="margin-left: 35%" color="blue" mode="determinate" value="{{interview.rating*20}}"></mat-progress-spinner>
+        <h2 class="example-h2">{{interview.rating}}</h2>
+  </div>
+  <div style="width: 20%; float:right; margin-right: 27%;">
+    <h2 class="example-h2">Tezina intervjua</h2>
+    
+    <mat-label>Lako</mat-label>
+    <mat-progress-bar mode="determinate" value="{{interview.easyPercent}}"></mat-progress-bar>
+    <br>
+    <mat-label>Srednje</mat-label>
+    <mat-progress-bar mode="determinate" value="{{interview.mediumPercent}}"></mat-progress-bar>
+    <br>
+    <mat-label>Tesko</mat-label>
+    <mat-progress-bar mode="determinate" value="{{interview.hardPercent}}"></mat-progress-bar>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<div  *ngFor="let comment of comments">
+  <mat-card style="width: 60%; margin-left: 20%">
+      <mat-card>
+          <mat-card-header style="background-color: #228ab9; padding: 0">
+              <mat-card-title style="color: white"><br>{{comment.rating}}<br></mat-card-title>
+          </mat-card-header>
+          <br>
+          <mat-card-subtitle style="font-size: large; color:#228ab9" >{{comment.username}}</mat-card-subtitle>
+          <mat-card-subtitle>Ocena: </mat-card-subtitle>
+          <mat-card-subtitle style="color: black">{{comment.rating}}</mat-card-subtitle>
+          <mat-card-subtitle>Komentar: </mat-card-subtitle>
+          <mat-card-subtitle style="color: black">{{comment.content}}</mat-card-subtitle>
+      </mat-card>    
+  </mat-card>
+  <br>
+</div>

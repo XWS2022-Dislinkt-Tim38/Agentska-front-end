@@ -40,6 +40,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { OfferComponent } from './components/offer/offer.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -84,7 +88,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSliderModule,
     MatChipsModule,
     ScrollingModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [AuthInterceptorProvider],

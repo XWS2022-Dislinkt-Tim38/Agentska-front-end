@@ -10,6 +10,7 @@ export const environment = {
   "baseUrlOfferService": "http://localhost:8020/offer",
   "baseSalaryService": "http://localhost:8020/salary",
   "baserUrlWebsite": "http://localhost:4201",
+  "baseCommentService": "http://localhost:8020/comment",
   
   "baseUrlUserMicroservice": "http://localhost:8000/user",
 };

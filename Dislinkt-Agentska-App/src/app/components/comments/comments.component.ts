@@ -26,7 +26,6 @@ export class CommentsComponent implements OnInit {
   currentUser: UserModel = new UserModel();
   comment: CommentModel = new CommentModel();
   comments: CommentModel[] = [];
-  companyUser: UserModel = new UserModel();
 
   //form
   flagComment: boolean = false;
