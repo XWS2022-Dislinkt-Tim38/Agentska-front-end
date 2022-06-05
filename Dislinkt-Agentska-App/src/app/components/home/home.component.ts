@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   companies: CompanyModel[] | undefined;
   offers: OfferModel[] | undefined;
   subs: Subscription[] = [];
+  search: string = "";
 
   constructor(private companyService: CompanyService, private offerService: OfferService, private router: Router) { }
 
@@ -46,5 +47,23 @@ export class HomeComponent implements OnInit {
 
   viewOffer(offerId?: string, compayId?: string) {
     this.router.navigate(['/company/' + compayId + '/offer/' + offerId]);
+  }
+
+  searchCompanies(event: any) {
+    if(this.search.length === 0 || this.search === null || this.search === undefined){
+      this.getAllCompanies();
+    }
+    this.companyService.getSearchedCompanies(this.search).subscribe((searchedCompanies: CompanyModel[]) => {
+      this.companies = searchedCompanies;
+      });
+  }
+
+  searchJobs(event: any) {
+    if(this.search.length === 0 || this.search === null || this.search === undefined){
+      this.getAllOffers();
+    }
+    this.offerService.getSearchedOffers(this.search).subscribe((searchedOffers: OfferModel[]) => {
+      this.offers = searchedOffers;
+      });
   }
 }

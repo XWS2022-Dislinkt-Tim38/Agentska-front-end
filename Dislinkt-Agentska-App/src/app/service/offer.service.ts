@@ -19,6 +19,10 @@ export class OfferService {
     return this.http.get(environment.baseUrlOfferService);
   }
 
+  public getSearchedOffers(search: string) : Observable<any>{
+    return this.http.get<OfferModel[]>(environment.baseUrlOfferService + "/search/" + search);
+}
+
   public getAllOffersByCompany(idCompany?: string): Observable<any> {
     return this.http.get(`${environment.baseUrlOfferService}/${idCompany}`);
   }

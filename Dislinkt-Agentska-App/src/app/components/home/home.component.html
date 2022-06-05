@@ -1,6 +1,7 @@
 <div>
     <br><br><br>
     <h2 style="text-align: center"> Companies</h2>
+    <input (keyup)="searchCompanies($event)" [(ngModel)]="search" style="margin-left:70%; margin-top: 10px;" type="text" placeholder="Search companies..."/>
     <div style="margin-left: 20%"  class="myBox">
         <mat-grid-list cols="2" rowHeight="2:1">
             <mat-grid-tile *ngFor="let company of companies">
@@ -32,6 +33,7 @@
 
     <br><br><br>
     <h2 style="text-align: center"> Jobs </h2>
+    <input (keyup)="searchJobs($event)" [(ngModel)]="search" style="margin-left:70%; margin-top: 10px;" type="text" placeholder="Search jobs..."/>
     <div class="myBox"  style="margin-left: 20%">
         <div style="margin-left: 5px; margin-right: 5px;">
             <br>

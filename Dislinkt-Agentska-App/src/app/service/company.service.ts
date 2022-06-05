@@ -30,6 +30,10 @@ export class CompanyService {
         return this.http.get<CompanyModel[]>(this.companyUrl);
     }
 
+    public getSearchedCompanies(search: string) : Observable<any>{
+        return this.http.get<CompanyModel[]>(this.companyUrl + "/search/" + search);
+    }
+
     public getUserCompanies(userId?: string) {
         return this.http.get<CompanyModel[]>(`${this.companyUrl}/usercompanies/?userId=${userId}`);
     }
