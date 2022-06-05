@@ -46,5 +46,9 @@ export class OfferService {
   public setSharedFlag(companyId: string, offerId: string): Observable<Boolean>{
     return this.http.put<Boolean>(`${this.offerUrl}/sharing/${companyId}/${offerId}`, null);
   }
+
+  public shareOffer(offer: any, key?: string): Observable<any>{
+    return this.http.post(environment.baseUrlOfferMicroservice + "/import/" + key, offer)
+  }
     
 }

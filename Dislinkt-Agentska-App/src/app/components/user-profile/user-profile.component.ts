@@ -71,16 +71,20 @@ export class UserProfileComponent implements OnInit {
   //TODO: Prilagoditi za vise kompanija
   share(offerId: string, offer: any): void{
 
-    /*
-     this.offerService.shareOffer(this.offer).subscribe({
+     this.offerService.shareOffer(offer, this.user?.key || '').subscribe({
+
+      next: () => 
+      {
+        this.offerService.setSharedFlag(this.company.id || '', offerId).subscribe(
+          {
+            next: response => {if(response) alert ("Successfully shared post!"); else alert ("Couldn't share post... Try again later."); window.location.reload()}
+          })
+      },
+      error: () => {alert("There was an error...")}
 
     })
-    */
-  
-    this.offerService.setSharedFlag(this.company.id || '', offerId).subscribe(
-      {
-        next: response => {if(response) alert ("Successfully shared post!"); else alert ("Couldn't share post... Try again later."); window.location.reload()}
-      })
+    
+    
   }
 
 }
