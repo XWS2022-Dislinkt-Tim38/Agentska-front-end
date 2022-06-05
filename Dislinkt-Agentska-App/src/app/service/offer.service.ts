@@ -23,6 +23,10 @@ export class OfferService {
     return this.http.get(`${environment.baseUrlOfferService}/${idCompany}`);
   }
 
+  public getAllOffersByUser(idUser?: string): Observable<any> {
+    return this.http.get(`${environment.baseUrlOfferService}/user/${idUser}`);
+  }
+
   public addOffer(offer?: OfferModel, id?: string): Observable<any>{
     return this.http.post(`${this.offerUrl}/${id}`, offer);
   }
@@ -33,6 +37,10 @@ export class OfferService {
 
   public editOffer(offer: OfferModel, companyId: string){
     return this.http.put(`${this.offerUrl}/${companyId}`, offer);
+  }
+
+  public setSharedFlag(companyId: string, offerId: string): Observable<Boolean>{
+    return this.http.put<Boolean>(`${this.offerUrl}/sharing/${companyId}/${offerId}`, null);
   }
     
 }

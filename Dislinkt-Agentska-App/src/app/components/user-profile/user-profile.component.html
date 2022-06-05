@@ -1,4 +1,35 @@
 <div style="margin-left: 5px; margin-right: 5px;">
-    <br>
-    <a mat-flat-button color="primary" class="itemSpacer" *ngIf="this.role === 'COMPANY_OWNER' && this.user?.key === ''" routerLink="linkaccount"> Link Dislinkt</a> 
+    <mat-tab-group style="margin: 5px;">
+        <br>
+        <mat-tab label="Info"> 
+            <a mat-flat-button color="primary" class="itemSpacer"  routerLink="linkaccount" [disabled]="this.isDisabled" style="margin: 10px;"> Link Dislinkt</a> 
+        </mat-tab>
+        <mat-tab label="My jobs"> 
+
+            <div class="myBox"  style="margin-left: 20%">
+                <div style="margin-left: 5px; margin-right: 5px;">
+                    <br>
+                    <mat-card *ngFor="let offer of company.offers" id> 
+                        <mat-card style="width: 900px;">
+                           <mat-card-header style="background-color: rgb(255,64,129); padding: 0;">
+                            <mat-card-title style="color: white"><br>{{offer.title}}<br></mat-card-title>
+                           </mat-card-header>
+                           <br>
+                            <mat-card-subtitle>{{offer.company}} &#9679; {{offer.city}}</mat-card-subtitle>
+                            <mat-card-subtitle>{{offer.seniority}}</mat-card-subtitle>
+                            <mat-chip-list>
+                                <mat-chip  *ngFor="let req of offer.requirements"> {{req}} </mat-chip>
+                            </mat-chip-list>
+                            <br>
+                            <mat-card-subtitle> Deadline: {{offer.deadlineDateString}}</mat-card-subtitle>   
+                            <br>
+                            <a mat-flat-button color="primary" class="itemSpacer" [disabled]="offer.isShared" style="margin: 10px;" (click)="share(offer.id || '', offer)"> Share on Dislinkt</a>            
+                        </mat-card>
+                    </mat-card>
+                </div>
+            </div>
+            
+
+        </mat-tab>
+      </mat-tab-group>
 </div>
