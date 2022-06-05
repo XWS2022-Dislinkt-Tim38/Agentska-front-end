@@ -13,6 +13,7 @@ export const environment = {
   "baseCommentService": "http://localhost:8020/comment",
   
   "baseUrlUserMicroservice": "http://localhost:8000/user",
+  "baseUrlOfferMicroservice": "http://localhost:8003/jobOffer",
 };
 
 /*
