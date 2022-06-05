@@ -13,14 +13,20 @@ export class UserProfileComponent implements OnInit {
   username?: string = this.authService.loggedUser?.sub
   role: string = this.authService.loggedUser?.role
   user?: UserModel
+  isDisabled: boolean = true
+
   constructor(private authService: AuthenticationService, private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log("role: " + this.role)
+   
     this.userService.getUser(this.username).subscribe((user: UserModel) => {
     
       this.user = user
-      console.log(user)
+
+      if(this.role === "COMPANY_OWNER" && this.user?.key === '')
+        this.isDisabled = false;
+      else
+        this.isDisabled = true;
   })
  
   }
