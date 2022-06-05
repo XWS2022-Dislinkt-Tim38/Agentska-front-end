@@ -37,4 +37,8 @@ export class CompanyService {
     public editCompany(company: CompanyModel){
         return this.http.put(this.companyUrl, company);
     }
+
+    public getCompanyByOwner(id: string): Observable<any> {
+        return this.http.get(`${this.companyUrl}/user/${id}`);
+    }
 }

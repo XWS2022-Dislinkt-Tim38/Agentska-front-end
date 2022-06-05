@@ -1,6 +1,11 @@
+import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OfferModel } from 'src/app/model/offer';
 import { UserModel } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { OfferService } from 'src/app/service/offer.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -14,21 +19,55 @@ export class UserProfileComponent implements OnInit {
   role: string = this.authService.loggedUser?.role
   user?: UserModel
   isDisabled: boolean = true
+  offers: OfferModel[] | undefined;
 
-  constructor(private authService: AuthenticationService, private userService: UserService) { }
+  constructor(private authService: AuthenticationService, 
+              private userService: UserService,  
+              private router: Router,
+              private offerService: OfferService,
+              private datePipe: DatePipe) { }
 
   ngOnInit(): void {
    
-    this.userService.getUser(this.username).subscribe((user: UserModel) => {
+    this.getUser();
     
-      this.user = user
+  }
 
+  getUser() {
+    this.userService.getUser(this.username).subscribe(
+    {
+      next: (user: UserModel) => {
+      
+        this.user = user
       if(this.role === "COMPANY_OWNER" && this.user?.key === '')
         this.isDisabled = false;
-      else
-        this.isDisabled = true;
-  })
+      
+      this.getAllOffers(user.id);
+      }   
+    })
+  }
+
+
+getAllOffers(userId?: string) {
+  this.offerService.getAllOffersByUser(userId).subscribe(
+    {
+      next: (offers: OfferModel[]) => 
+      {       
+        offers.forEach(offer => {
+          offer.publishDateString = this.datePipe.transform(offer.publishDate, 'dd/MM/yyyy') || ''
+          offer.deadlineDateString = this.datePipe.transform(offer.deadlineDate, 'dd/MM/yyyy') || ''
+        });
+
+        this.offers = offers; console.log(offers)
+      },
+      error: (error: HttpErrorResponse) => {alert(error.message);}
+    }
+  )
  
+} 
+
+  viewOffer(offerId?: string, compayId?: string) {
+    this.router.navigate(['/company/' + compayId + '/offer/' + offerId]);
   }
 
 }

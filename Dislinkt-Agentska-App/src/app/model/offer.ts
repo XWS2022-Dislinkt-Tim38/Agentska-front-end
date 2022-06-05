@@ -13,4 +13,7 @@ export class OfferModel {
     publishDate?: Date;
     deadlineDate?: Date;
     city?: string;
+    isShared?: boolean
+    publishDateString?: string
+    deadlineDateString?: string
 }

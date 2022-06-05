@@ -43,6 +43,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTabsModule} from '@angular/material/tabs'
+import { DatePipe } from '@angular/common';
+
 
 
 
@@ -91,10 +94,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatGridListModule,
     MatRadioModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule
 
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

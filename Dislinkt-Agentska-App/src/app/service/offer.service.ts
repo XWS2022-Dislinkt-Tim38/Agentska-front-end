@@ -23,6 +23,10 @@ export class OfferService {
     return this.http.get(`${environment.baseUrlOfferService}/${idCompany}`);
   }
 
+  public getAllOffersByUser(idUser?: string): Observable<any> {
+    return this.http.get(`${environment.baseUrlOfferService}/user/${idUser}`);
+  }
+
   public addOffer(offer?: OfferModel, id?: string): Observable<any>{
     return this.http.post(`${this.offerUrl}/${id}`, offer);
   }
