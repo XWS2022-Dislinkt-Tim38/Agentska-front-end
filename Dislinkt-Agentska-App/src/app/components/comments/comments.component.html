@@ -10,16 +10,16 @@
                 <button class="button" (click)="goHome()">O kompaniji</button>
             </th>
             <th style="text-align: center">
-                <button class="button" style="background-color: #228ab9; color: white" >Komentari</button>
+                <button class="button" style="background-color: #228ab9; color: white" >Comments</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goSalaries()">Plata i benefiti</button>
+                <button class="button" (click)="goSalaries()">Salary and benefits</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goInterview()">Intervju</button>
+                <button class="button" (click)="goInterview()">Interview</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goOffers()">Poslovi</button>
+                <button class="button" (click)="goOffers()">Jobs</button>
             </th>
           </tr>
         </thead>
@@ -28,7 +28,7 @@
 <br>
 
 <div style="text-align: center;" >
-    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()" [disabled]= "this.isDisabled">Ostavi komentar</button>
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()" [disabled]= "this.isDisabled">Leave a comment</button>
 </div>
 <br>
 <div *ngIf="flagComment">

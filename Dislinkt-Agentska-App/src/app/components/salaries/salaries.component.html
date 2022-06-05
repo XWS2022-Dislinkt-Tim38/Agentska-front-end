@@ -7,26 +7,26 @@
         <thead>
           <tr>
             <th style="text-align: center">
-                <button class="button" (click)="goHome()">O kompaniji</button>
+                <button class="button" (click)="goHome()">About</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goComments()">Komentari</button>
+                <button class="button" (click)="goComments()">Comments</button>
             </th>
             <th style="text-align: center">
-                <button class="button" style="background-color: #228ab9; color: white" >Plata i benefiti</button>
+                <button class="button" style="background-color: #228ab9; color: white" >Salary and benefits</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goInterview()">Intervju</button>
+                <button class="button" (click)="goInterview()">Interview</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goOffers()">Poslovi</button>
+                <button class="button" (click)="goOffers()">Jobs</button>
             </th>
           </tr>
         </thead>
       </table>
 </div>
 <div *ngIf="!(this.currentUser.role == 'COMPANY_OWNER' || this.currentUser.role == 'ADMIN')" style="text-align: center">
-    <button class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagSalary" (click)="openSalaryDialog()">Dodaj platu</button>
+    <button class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagSalary" (click)="openSalaryDialog()">Add salary</button>
 </div>
 <div *ngIf="flagSalary">
     <form style="text-align: center;">
@@ -51,8 +51,8 @@
 <div style="width: 80%; margin-left: 10%">
     <table id="salaries" style="width: 100%; text-align: center;">
         <tr>
-            <th>Radna pozicija</th>
-            <th>Neto prosek</th>
+            <th>Position</th>
+            <th>Neto</th>
             <th></th>
             <th>Min</th>
             <th></th>
@@ -62,7 +62,7 @@
             <tr >
                 <td>{{salary.position}}</td>
                 <td>{{salary.averageSalary}}</td>
-                <td>(Broj plata: {{salary.salaryCount}})</td>
+                <td>(Number of salaries: {{salary.salaryCount}})</td>
                 <td>{{salary.min}}</td>
                 <td style="width: 10px">
                     <tr *ngIf="!(salary.salaryCount==1)">{{salary.averageSalary}}</tr>

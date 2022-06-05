@@ -15,7 +15,8 @@
             <td>{{ company.companyDetails.name}}</td>
             <td>{{ company.companyDetails.city }}</td>
             <td>
-                <button routerLink="{{company.id}}" class="button">VIEW</button>
+                <button routerLink="{{company.id}}" class="button">EDIT</button>
+                <button style="margin-left: 10%" (click)="companyDetails(company.id)" class="button">VIEW</button>
             </td>
           </tr>
         </tbody>

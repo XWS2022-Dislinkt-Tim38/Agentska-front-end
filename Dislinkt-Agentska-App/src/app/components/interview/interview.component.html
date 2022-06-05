@@ -7,26 +7,26 @@
         <thead>
           <tr>
             <th style="text-align: center">
-                <button class="button" (click)="goHome()">O kompaniji</button>
+                <button class="button" (click)="goHome()">About</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goComments()" >Komentari</button>
+                <button class="button" (click)="goComments()" >Comments</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goSalaries()">Plata i benefiti</button>
+                <button class="button" (click)="goSalaries()">Salary and benefits</button>
             </th>
             <th style="text-align: center">
-                <button class="button" style="background-color: #228ab9; color: white" >Intervju</button>
+                <button class="button" style="background-color: #228ab9; color: white" >Interview</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goOffers()">Poslovi</button>
+                <button class="button" (click)="goOffers()">Jobs</button>
             </th>
           </tr>
         </thead>
       </table>
 </div>
 <div *ngIf="!(this.currentUser.role == 'COMPANY_OWNER' || this.currentUser.role == 'ADMIN')" style="text-align: center;" >
-    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()">Ostavi utisak sa intervjua</button>
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()">Leave your impression</button>
 </div>
 <br>
 <div *ngIf="flagComment">
@@ -52,7 +52,7 @@
     </div>
     <br>
     <div>
-        <label id="example-radio-group-label">Tezina intervjua</label>
+        <label id="example-radio-group-label">Difficulty</label>
         <mat-radio-group
         aria-labelledby="example-radio-group-label"
         class="example-radio-group"
@@ -69,20 +69,20 @@
 <br>
 <div >
   <div style="width: 20%; float:left; margin-left: 30%; text-align: center; align-items: center;">
-        <h2 class="example-h2">Ocena procesa selekcija</h2>
+        <h2 class="example-h2">Overall grade</h2>
         <mat-progress-spinner style="margin-left: 35%" color="blue" mode="determinate" value="{{interview.rating*20}}"></mat-progress-spinner>
         <h2 class="example-h2">{{interview.rating}}</h2>
   </div>
   <div style="width: 20%; float:right; margin-right: 27%;">
-    <h2 class="example-h2">Tezina intervjua</h2>
+    <h2 class="example-h2">Interview difficulty</h2>
     
-    <mat-label>Lako</mat-label>
+    <mat-label>Easy</mat-label>
     <mat-progress-bar mode="determinate" value="{{interview.easyPercent}}"></mat-progress-bar>
     <br>
-    <mat-label>Srednje</mat-label>
+    <mat-label>Medium</mat-label>
     <mat-progress-bar mode="determinate" value="{{interview.mediumPercent}}"></mat-progress-bar>
     <br>
-    <mat-label>Tesko</mat-label>
+    <mat-label>Hard</mat-label>
     <mat-progress-bar mode="determinate" value="{{interview.hardPercent}}"></mat-progress-bar>
   </div>
 </div>

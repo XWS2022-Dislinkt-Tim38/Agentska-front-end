@@ -27,6 +27,7 @@ export class OfferComponent implements OnInit {
   private _flagDisabledEdit = new BehaviorSubject<boolean>(false)
   flagDisabledEdit = this._flagDisabledEdit.asObservable()
   offerEdit: OfferModel = new OfferModel();
+  flagEdit: boolean = false;
 
   
   //za edit
@@ -41,27 +42,24 @@ export class OfferComponent implements OnInit {
   deadlineDate?: Date;
   city?: string;
 
-  constructor(private offerService: OfferService, private router: Router, private route: ActivatedRoute, private auth: AuthenticationService, private userService: UserService) {
+  constructor(private offerService: OfferService, private router: Router, private route: ActivatedRoute, public auth: AuthenticationService, private userService: UserService) {
     this._flagDisabledEdit.next(true);
-    
+
    }
 
   ngOnInit(): void {
 
     if(this.auth.isLoggedIn$){
+      console.log(this.auth.loggedUser)
       this.userService.getUser(this.auth.loggedUser?.sub).subscribe((response: UserModel) => {
          this.currentUser = response;
-         console.log("User: ")
-         console.log(this.currentUser)
+         if(this.currentUser.role = 'COMPANY_OWNER'){
+          this.flagOwner = true;
+        } else {
+          this.flagOwner = false;
+        }
        });
     }
-
-    if(this.currentUser.role = 'COMPANY_OWNER'){
-      this.flagOwner = true;
-    } else {
-      this.flagOwner = false;
-    }
-    console.log(this.flagOwner);
 
     this.idOffer = this.route.snapshot.params['idOffer'];
     this.idCompany = this.route.snapshot.params['idCompany'];

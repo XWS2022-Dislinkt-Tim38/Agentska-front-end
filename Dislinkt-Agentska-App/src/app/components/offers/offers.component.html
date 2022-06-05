@@ -7,19 +7,19 @@
         <thead>
           <tr>
             <th style="text-align: center">
-                <button class="button" (click)="goHome()">O kompaniji</button>
+                <button class="button" (click)="goHome()">About</button>
             </th>
             <th style="text-align: center">
-                <button class="button"  (click)="goComments()">Komentari</button>
+                <button class="button"  (click)="goComments()">Comments</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goSalaries()">Plata i benefiti</button>
+                <button class="button" (click)="goSalaries()">Salary and benefits</button>
             </th>
             <th style="text-align: center">
-                <button class="button" (click)="goInterview()">Intervju</button>
+                <button class="button" (click)="goInterview()">Interview</button>
             </th>
             <th style="text-align: center">
-                <button class="button" style="background-color: #228ab9; color: white">Poslovi</button>
+                <button class="button" style="background-color: #228ab9; color: white">Job offers</button>
             </th>
           </tr>
         </thead>
@@ -27,7 +27,7 @@
 </div>
 
 <div *ngIf="(this.currentUser.role == 'COMPANY_OWNER')" style="text-align: center;" >
-    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagOffer" (click)="openOfferDialog()">Napravi pondu</button>
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagOffer" (click)="openOfferDialog()">Create offer</button>
 </div>
 <br>
 <div width="80%">
