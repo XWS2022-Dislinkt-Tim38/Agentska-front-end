@@ -51,14 +51,19 @@ export class OfferComponent implements OnInit {
 
     if(this.auth.isLoggedIn$){
       console.log(this.auth.loggedUser)
-      this.userService.getUser(this.auth.loggedUser?.sub).subscribe((response: UserModel) => {
-         this.currentUser = response;
-         if(this.currentUser.role = 'COMPANY_OWNER'){
-          this.flagOwner = true;
-        } else {
-          this.flagOwner = false;
-        }
-       });
+      if(this.auth.loggedUser?.sub === undefined){
+
+      } else {
+        this.userService.getUser(this.auth.loggedUser?.sub).subscribe((response: UserModel) => {
+          this.currentUser = response;
+          if(this.currentUser.role = 'COMPANY_OWNER'){
+           this.flagOwner = true;
+         } else {
+           this.flagOwner = false;
+         }
+        });
+      }
+      
     }
 
     this.idOffer = this.route.snapshot.params['idOffer'];
