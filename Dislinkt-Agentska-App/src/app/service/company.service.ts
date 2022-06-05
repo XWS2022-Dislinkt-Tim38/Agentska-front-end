@@ -38,7 +38,7 @@ export class CompanyService {
         return this.http.put(this.companyUrl, company);
     }
 
-    public getCompanyByOwner(id: string): Observable<any> {
+    public getCompanyByOwner(id?: string): Observable<any> {
         return this.http.get(`${this.companyUrl}/user/${id}`);
     }
 }

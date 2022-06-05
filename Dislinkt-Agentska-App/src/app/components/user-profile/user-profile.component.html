@@ -9,7 +9,7 @@
             <div class="myBox"  style="margin-left: 20%">
                 <div style="margin-left: 5px; margin-right: 5px;">
                     <br>
-                    <mat-card *ngFor="let offer of offers" id> 
+                    <mat-card *ngFor="let offer of company.offers" id> 
                         <mat-card style="width: 900px;">
                            <mat-card-header style="background-color: rgb(255,64,129); padding: 0;">
                             <mat-card-title style="color: white"><br>{{offer.title}}<br></mat-card-title>
@@ -23,7 +23,7 @@
                             <br>
                             <mat-card-subtitle> Deadline: {{offer.deadlineDateString}}</mat-card-subtitle>   
                             <br>
-                            <a mat-flat-button color="primary" class="itemSpacer" [disabled]="offer.isShared" style="margin: 10px;"> Share on Dislinkt</a>            
+                            <a mat-flat-button color="primary" class="itemSpacer" [disabled]="offer.isShared" style="margin: 10px;" (click)="share()"> Share on Dislinkt</a>            
                         </mat-card>
                     </mat-card>
                 </div>
