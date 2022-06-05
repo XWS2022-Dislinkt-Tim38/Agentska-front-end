@@ -2,10 +2,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { CompanyModel } from 'src/app/model/company';
 import { OfferModel } from 'src/app/model/offer';
 import { UserModel } from 'src/app/model/user';
 import { UserTokenModel } from 'src/app/model/userToken';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { CompanyService } from 'src/app/service/company.service';
 import { OfferService } from 'src/app/service/offer.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -28,7 +30,7 @@ export class OfferComponent implements OnInit {
   flagDisabledEdit = this._flagDisabledEdit.asObservable()
   offerEdit: OfferModel = new OfferModel();
   flagEdit: boolean = false;
-
+  companies: CompanyModel[] = new Array<CompanyModel>();
   
   //za edit
   title?: string;
@@ -42,22 +44,41 @@ export class OfferComponent implements OnInit {
   deadlineDate?: Date;
   city?: string;
 
-  constructor(private offerService: OfferService, private router: Router, private route: ActivatedRoute, public auth: AuthenticationService, private userService: UserService) {
+  constructor(private companyService: CompanyService, private offerService: OfferService, private router: Router, private route: ActivatedRoute, public auth: AuthenticationService, private userService: UserService) {
     this._flagDisabledEdit.next(true);
 
    }
 
   ngOnInit(): void {
 
+    this.idOffer = this.route.snapshot.params['idOffer'];
+    this.idCompany = this.route.snapshot.params['idCompany'];
+    this.getOffer();
+
     if(this.auth.isLoggedIn$){
       console.log(this.auth.loggedUser)
+
+      
+      this.subs.push(this.companyService.getAllCompanies().subscribe((response: CompanyModel[]) => {
+        this.companies = response;
+      }, (error: HttpErrorResponse) => {
+        alert(error.message);
+      }));
+      
       if(this.auth.loggedUser?.sub === undefined){
 
       } else {
         this.userService.getUser(this.auth.loggedUser?.sub).subscribe((response: UserModel) => {
           this.currentUser = response;
-          if(this.currentUser.role = 'COMPANY_OWNER'){
-           this.flagOwner = true;
+          if(this.currentUser.role = 'COMPANY_OWNER' || this.currentUser.role == 'ADMIN'){
+            for(let company of this.companies){
+              if(company.companyDetails.name == this.offer.company){
+                if(company.idUser == this.currentUser.id){
+                  this.flagOwner = true;
+                }
+              }
+            }
+           
          } else {
            this.flagOwner = false;
          }
@@ -66,10 +87,7 @@ export class OfferComponent implements OnInit {
       
     }
 
-    this.idOffer = this.route.snapshot.params['idOffer'];
-    this.idCompany = this.route.snapshot.params['idCompany'];
-    console.log(this.idOffer);
-    this.getOffer();
+    
 
   }
 
