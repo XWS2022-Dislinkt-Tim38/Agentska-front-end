@@ -22,6 +22,7 @@ export class UserProfileComponent implements OnInit {
   user?: UserModel
   isDisabled: boolean = true
   company: CompanyModel = new CompanyModel()
+  offer: OfferModel = new OfferModel()
 
   constructor(private authService: AuthenticationService, 
               private userService: UserService,  
@@ -49,6 +50,11 @@ export class UserProfileComponent implements OnInit {
         {
           next: (company: CompanyModel) => 
           {
+            company.offers.forEach(offer => {
+              offer.publishDateString = this.datePipe.transform(offer.publishDate, 'dd/MM/yyyy') || ''
+              offer.deadlineDateString = this.datePipe.transform(offer.deadlineDate, 'dd/MM/yyyy') || ''
+              
+            });
             this.company = company; 
           }
         }
@@ -62,8 +68,19 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/company/' + compayId + '/offer/' + offerId]);
   }
 
-  share(): void{
+  //TODO: Prilagoditi za vise kompanija
+  share(offerId: string, offer: any): void{
 
+    /*
+     this.offerService.shareOffer(this.offer).subscribe({
+
+    })
+    */
+  
+    this.offerService.setSharedFlag(this.company.id || '', offerId).subscribe(
+      {
+        next: response => {if(response) alert ("Successfully shared post!"); else alert ("Couldn't share post... Try again later."); window.location.reload()}
+      })
   }
 
 }

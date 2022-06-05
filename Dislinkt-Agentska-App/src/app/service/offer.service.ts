@@ -38,5 +38,9 @@ export class OfferService {
   public editOffer(offer: OfferModel, companyId: string){
     return this.http.put(`${this.offerUrl}/${companyId}`, offer);
   }
+
+  public setSharedFlag(companyId: string, offerId: string): Observable<Boolean>{
+    return this.http.put<Boolean>(`${this.offerUrl}/sharing/${companyId}/${offerId}`, null);
+  }
     
 }

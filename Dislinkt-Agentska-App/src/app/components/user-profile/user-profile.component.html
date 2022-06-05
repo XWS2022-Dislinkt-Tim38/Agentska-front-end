@@ -23,7 +23,7 @@
                             <br>
                             <mat-card-subtitle> Deadline: {{offer.deadlineDateString}}</mat-card-subtitle>   
                             <br>
-                            <a mat-flat-button color="primary" class="itemSpacer" [disabled]="offer.isShared" style="margin: 10px;" (click)="share()"> Share on Dislinkt</a>            
+                            <a mat-flat-button color="primary" class="itemSpacer" [disabled]="offer.isShared" style="margin: 10px;" (click)="share(offer.id || '', offer)"> Share on Dislinkt</a>            
                         </mat-card>
                     </mat-card>
                 </div>
