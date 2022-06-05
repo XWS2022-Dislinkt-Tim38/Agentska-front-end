@@ -29,6 +29,7 @@ export class CommentsComponent implements OnInit {
 
   //form
   flagComment: boolean = false;
+  isDisabled: boolean = false;
   title: string = '';
   content: string = '';
   rating: number = 1;
@@ -68,6 +69,15 @@ export class CommentsComponent implements OnInit {
   getAllCompanyComments() {
     this.subs.push(this.commentService.getAllCompanyComments(this.idCompany).subscribe((response: CommentModel[]) => {
       this.comments = response;
+      
+      response.forEach(comment => {
+        
+        if(comment.idUser === this.currentUser.id){
+          this.isDisabled = true;
+        }
+          
+      });
+      
       console.log(response);
     }, (error: HttpErrorResponse) => {
       console.log(error);

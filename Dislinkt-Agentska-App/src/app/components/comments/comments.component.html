@@ -27,7 +27,7 @@
 </div>
 <br>
 <div style="text-align: center;" >
-    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()">Ostavi komentar</button>
+    <button mat-button-raised class="button" style="background-color: #ca5d5d; color: white" *ngIf="!flagComment" (click)="openCommentDialog()" [disabled]= "this.isDisabled">Ostavi komentar</button>
 </div>
 <br>
 <div *ngIf="flagComment">
