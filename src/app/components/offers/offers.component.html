@@ -4,6 +4,7 @@
 <br>
 <div>
     <table id="requests">
+        <caption>Directions</caption>
         <thead>
           <tr>
             <th style="text-align: center">
@@ -126,7 +127,9 @@
         <div id="middlebox"><br></div>
         <div style="text-align: left;" id="rightbox2">
                 <table style="width: 100%" style="text-align: left;" mat-table >
+                    <caption>List of requirements</caption>
                     <tr *ngFor="let req of requirementsList">
+                        <th></th>
                         <td><a mat-list-item > {{ req }} </a></td>
                         <td><button mat-button (click)="removeRequirement(req)">Detach</button></td>
                     </tr>
