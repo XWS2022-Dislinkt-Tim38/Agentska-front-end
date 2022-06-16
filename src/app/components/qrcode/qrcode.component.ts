@@ -11,6 +11,7 @@ export class QrcodeComponent implements OnInit {
 
   qrcodeimage: string = ""
   code: string = ""
+  password: string = ""
 
   constructor(private authService: AuthenticationService, private router: Router) { }
 
@@ -29,7 +30,7 @@ export class QrcodeComponent implements OnInit {
   }
 
   confirm(): void {
-     this.authService.verifyCode(this.code).subscribe({
+     this.authService.verifyCode(this.code, this.password).subscribe({
       next: () => {
         this.authService.enable2fa(this.authService.loggedUser?.userId).subscribe(
           {

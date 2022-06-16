@@ -7,7 +7,7 @@
             <hr class="solid">
             <br>
             <div>
-                <img [src]="qrcodeimage">
+                <img [src]="qrcodeimage" alt="none">
             </div>
             
         </div>
@@ -18,6 +18,12 @@
               <mat-label style="text-align: center">Enter generated code</mat-label>
               <input matInput name="code" [(ngModel)]="code">       
             </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" class="form-field" style="width: 15%;">
+                <mat-label  style="text-align: center">Enter password</mat-label>
+                <input type="password" matInput name="code" [(ngModel)]="password">       
+              </mat-form-field>
+            
           </div>
           <div fxFlex="100%">
             <button class="itemSpacer" mat-stroked-button color="primary" (click)="cancel()">Cancel</button>

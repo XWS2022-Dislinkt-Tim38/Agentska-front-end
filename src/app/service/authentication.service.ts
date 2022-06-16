@@ -108,12 +108,13 @@ export class AuthenticationService {
     )
   }
 
-  public verifyCode(code: string): Observable<any>{
+  public verifyCode(code: string, password: string): Observable<any>{
     var request = {
-      username: "Imenko99",
-      password: "USERsifra123",
+      username: this.loggedUser?.sub,
+      password: password,
       mfaCode: code
     }
+    console.log(request)
     return this.http.post(environment.baseUrlAuthService + "/verify2fa", request)                                              
   }
 
