@@ -53,6 +53,5 @@ export class UserService {
     public setKey(userId: string, keyValue: string): Observable<any>{
         return this.http.put(environment.baseUrlUserService + "/key", {userId, keyValue})
     }
-    
 
 }

@@ -12,4 +12,6 @@ export class UserModel{
     dateOfBirth?: string;
     isVerified?: boolean;
     sub?: string;
+    isUsingMfa?: boolean
+    secret?: string
 }

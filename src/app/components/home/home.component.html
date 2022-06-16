@@ -4,9 +4,9 @@
     <input (keyup)="searchCompanies($event)" [(ngModel)]="search" style="margin-left:70%; margin-top: 10px;" type="text" placeholder="Search companies..."/>
     <div style="margin-left: 20%"  class="myBox">
         <mat-grid-list cols="2" rowHeight="2:1">
+            <br>
             <mat-grid-tile *ngFor="let company of companies">
                 <table id="requests">
-                    <caption>Directions</caption>
                     <tr>
                         <th style="text-align: center;" colspan="2" scope="colgroup">{{company.companyDetails.name}}</th>
                     </tr>

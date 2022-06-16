@@ -3,6 +3,8 @@
         <br>
         <mat-tab label="Info"> 
             <a mat-flat-button color="primary" class="itemSpacer"  routerLink="linkaccount" [disabled]="this.isDisabled" style="margin: 10px;"> Link Dislinkt</a> 
+            <br>
+            <a mat-flat-button color="primary" class="itemSpacer"  routerLink="2faconfig" [disabled]="this.user?.isUsingMfa" style="margin: 10px;"> Enable 2FA</a> 
         </mat-tab>
         <mat-tab label="My jobs"> 
 

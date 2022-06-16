@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit {
   role: string = this.authService.loggedUser?.role
   user?: UserModel
   isDisabled: boolean = true
+  mfaDisabled: boolean = false
   company: CompanyModel = new CompanyModel()
   offer: OfferModel = new OfferModel()
 
@@ -42,10 +43,12 @@ export class UserProfileComponent implements OnInit {
     {
       next: (user: UserModel) => {
       
-        this.user = user
+      this.user = user
+      console.log(user)
+      
       if(this.role === "COMPANY_OWNER" && this.user?.key === '')
         this.isDisabled = false;
-      
+ 
       this.companyService.getCompanyByOwner(this.user.id).subscribe(
         {
           next: (company: CompanyModel) => 
@@ -56,7 +59,8 @@ export class UserProfileComponent implements OnInit {
               
             });
             this.company = company; 
-          }
+          },
+          error: () => {alert("No companies found")}
         }
       )
 

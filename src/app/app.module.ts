@@ -45,6 +45,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs'
 import { DatePipe } from '@angular/common';
+import { QrcodeComponent } from './components/qrcode/qrcode.component';
+import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
 
 
 
@@ -69,7 +71,9 @@ import { DatePipe } from '@angular/common';
     OffersComponent,
     UserProfileComponent,
     LinkAccountComponent,
-    OfferComponent
+    OfferComponent,
+    QrcodeComponent,
+    VerifyCodeComponent
   ],
   imports: [
     BrowserModule,

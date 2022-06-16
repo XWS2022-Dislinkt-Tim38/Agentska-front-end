@@ -26,11 +26,14 @@ export class AuthenticationService {
   isUser = this._isUser.asObservable()
   loggedUser: UserTokenModel | null;
 
+  inputUsername: string = ""
+  inputPassword: string = ""
+
   get token(): any {
     return localStorage.getItem('regUserToken');
   }
 
-  constructor(private http: HttpClient, private router: Router,  private activeRoute: ActivatedRoute) { 
+  constructor(private http: HttpClient, private router: Router) { 
 
     this._isLoggedIn$.next(!!this.token)
     this.loggedUser = this.getUser(this.token)
@@ -39,14 +42,23 @@ export class AuthenticationService {
     
   }
 
-  public login(obj: any): Observable<any>{
-      this.router.navigate(['/'])
+  public login(obj: any): Observable<any>{   
+       
       return this.http.post(environment.baseUrlAuthService + "/login", obj).pipe(
         tap((response: any) => {
-                         
-          this.storeToken(response.accessToken)
-          this.loggedUser = this.getUser(response.accessToken) 
-          window.location.href= environment.baserUrlWebsite   
+          if(response == null){
+              
+            this.inputUsername = obj.username,
+            this.inputPassword = obj.password
+            
+            this.router.navigate(['/verifyCode'])
+          } else {
+            this.storeToken(response.accessToken)
+            this.loggedUser = this.getUser(response.accessToken) 
+            this.router.navigate(['/'])  
+            window.location.href= environment.baserUrlWebsite   
+            
+          }        
         })                                   
       )  
   }
@@ -67,6 +79,28 @@ export class AuthenticationService {
     //this.router.navigate(['/login'])
     window.location.href= environment.baserUrlWebsite + "/login"
     localStorage.removeItem("regUserToken")
+  }
+
+  public enable2fa(userId: string): Observable<any>{
+    return this.http.put(environment.baseUrlAuthService + "/enable2fa/" + userId, null, {responseType: 'text' })
+  }
+
+  public verifyCode(code: string): Observable<any>{
+    var request = {
+      username: this.inputUsername,
+      password: this.inputPassword,
+      mfaCode: code
+    }
+    console.log("REQUEST:")
+    console.log(request)
+    return this.http.post(environment.baseUrlAuthService + "/verify2fa", request).pipe(
+      tap((response: any) => {
+          this.storeToken(response.accessToken)
+          this.loggedUser = this.getUser(response.accessToken)  
+          this.router.navigate(['/'])  
+          window.location.href= environment.baserUrlWebsite          
+      })                                   
+    )
   }
 
 }

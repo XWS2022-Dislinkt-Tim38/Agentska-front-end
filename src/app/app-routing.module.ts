@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HasRoleGuard } from './auth/has-role.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
@@ -19,6 +19,8 @@ import { OffersComponent } from './components/offers/offers.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LinkAccountComponent } from './components/link-account/link-account.component';
 import { OfferComponent } from './components/offer/offer.component';
+import { QrcodeComponent } from './components/qrcode/qrcode.component';
+import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
 
 
 const routes: Routes = [
@@ -96,6 +98,15 @@ const routes: Routes = [
 
   { path: "company/:idCompany/offer/:idOffer",
     component: OfferComponent,
+  },
+  {
+    path: "user/:username/2faconfig",
+    canActivate: [LoggedInGuard],
+    component: QrcodeComponent
+  },
+  {
+    path: "verifyCode",
+    component: VerifyCodeComponent
   }
 
 ];
