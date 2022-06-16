@@ -31,14 +31,12 @@ export class QrcodeComponent implements OnInit {
   confirm(): void {
      this.authService.verifyCode(this.code).subscribe({
       next: () => {
-        alert("Verified")
         this.authService.enable2fa(this.authService.loggedUser?.userId).subscribe(
           {
             next: () => 
             {
               alert("Successfully enabled 2FA")
               this.authService.logout()
-              this.router.navigate(['/'])
             },
             error: () => {alert("Invalid code!")}
           }

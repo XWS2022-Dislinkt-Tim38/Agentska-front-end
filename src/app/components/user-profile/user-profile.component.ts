@@ -85,10 +85,9 @@ export class UserProfileComponent implements OnInit {
           })
       },
       error: () => {alert("There was an error...")}
-
     })
-    
-    
   }
+
+  
 
 }
