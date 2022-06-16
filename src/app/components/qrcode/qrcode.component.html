@@ -4,19 +4,24 @@
             <br>
             <h3> Please scan QR Code below to finalize 2FA configuration</h3>
             <br>
-            <img [src]="qrcodeimage">
+            <hr class="solid">
+            <br>
+            <div>
+                <img [src]="qrcodeimage">
+            </div>
+            
         </div>
         <br>
     
         <div fxFlex="100%">
-            <mat-form-field appearance="fill" class="form-field" style="width: 50%;">
-              <mat-label>Enter generated code</mat-label>
-              <input matInput name="code" [(ngModel)]="code" required>       
+            <mat-form-field appearance="fill" class="form-field" style="width: 15%;">
+              <mat-label style="text-align: center">Enter generated code</mat-label>
+              <input matInput name="code" [(ngModel)]="code">       
             </mat-form-field>
           </div>
           <div fxFlex="100%">
-            <button mat-stroked-button color="primary" (click)="cancel()">Cancel</button>
-            <button mat-stroked-button color="primary" type="submit">Confirm</button>
+            <button class="itemSpacer" mat-stroked-button color="primary" (click)="cancel()">Cancel</button>
+            <button mat-flat-button color="primary" type="submit">Confirm</button>
         </div>   
     </form>   
 </div>
