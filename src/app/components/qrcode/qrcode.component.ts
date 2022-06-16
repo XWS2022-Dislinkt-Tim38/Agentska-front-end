@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
@@ -9,15 +10,41 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 export class QrcodeComponent implements OnInit {
 
   qrcodeimage: string = ""
-  constructor(private authService: AuthenticationService) { }
+  code: string = ""
+
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.authService.enable2fa(this.authService.loggedUser?.userId).subscribe(
+    this.authService.getQRCode(this.authService.loggedUser?.userId).subscribe(
       {
         next: (qrcode: string) => {console.log(qrcode), this.qrcodeimage = qrcode}
       }
     )
+   
+  }
+
+  cancel(): void {
+    this.router.navigate(['/'])
+  }
+
+  confirm(): void {
+     this.authService.verifyCode(this.code).subscribe({
+      next: () => {
+        alert("Verified")
+        this.authService.enable2fa(this.authService.loggedUser?.userId).subscribe(
+          {
+            next: () => 
+            {
+              alert("Successfully enabled 2FA")
+              this.authService.logout()
+              this.router.navigate(['/'])
+            },
+            error: () => {alert("Invalid code!")}
+          }
+        )
+      }
+     })
   }
 
 }

@@ -16,7 +16,7 @@ export class VerifyCodeComponent implements OnInit {
 
   verify(): void{
 
-    this.authService.verifyCode(this.code).subscribe(
+    this.authService.login2fa(this.code).subscribe(
       {
         next: () => {alert("Successfully logged in")},
         error: () => {alert("Wrong code!")}

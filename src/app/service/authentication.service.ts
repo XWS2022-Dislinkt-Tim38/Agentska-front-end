@@ -49,10 +49,11 @@ export class AuthenticationService {
           if(response == null){
               
             this.inputUsername = obj.username,
-            this.inputPassword = obj.password
-            
+            this.inputPassword = obj.password     
             this.router.navigate(['/verifyCode'])
           } else {
+            this.inputUsername = obj.username,
+            this.inputPassword = obj.password 
             this.storeToken(response.accessToken)
             this.loggedUser = this.getUser(response.accessToken) 
             this.router.navigate(['/'])  
@@ -81,11 +82,15 @@ export class AuthenticationService {
     localStorage.removeItem("regUserToken")
   }
 
-  public enable2fa(userId: string): Observable<any>{
-    return this.http.put(environment.baseUrlAuthService + "/enable2fa/" + userId, null, {responseType: 'text' })
+  public getQRCode(userId: string): Observable<any>{
+    return this.http.put(environment.baseUrlAuthService + "/generateQRCode/" + userId, null, {responseType: 'text' })
   }
 
-  public verifyCode(code: string): Observable<any>{
+  public enable2fa(userId: string): Observable<any>{
+    return this.http.put(environment.baseUrlAuthService + "/enable2fa/" + userId, null)
+  }
+
+  public login2fa(code: string): Observable<any>{
     var request = {
       username: this.inputUsername,
       password: this.inputPassword,
@@ -93,7 +98,7 @@ export class AuthenticationService {
     }
     console.log("REQUEST:")
     console.log(request)
-    return this.http.post(environment.baseUrlAuthService + "/verify2fa", request).pipe(
+    return this.http.post(environment.baseUrlAuthService + "/login/2fa", request).pipe(
       tap((response: any) => {
           this.storeToken(response.accessToken)
           this.loggedUser = this.getUser(response.accessToken)  
@@ -101,6 +106,15 @@ export class AuthenticationService {
           window.location.href= environment.baserUrlWebsite          
       })                                   
     )
+  }
+
+  public verifyCode(code: string): Observable<any>{
+    var request = {
+      username: "Imenko99",
+      password: "USERsifra123",
+      mfaCode: code
+    }
+    return this.http.post(environment.baseUrlAuthService + "/verify2fa", request)                                              
   }
 
 }
